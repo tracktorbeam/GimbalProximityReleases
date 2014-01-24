@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gimbal Adding Frameworks and Libraries</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/overrides.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="../images/favicon.ico">
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" onload="prettyPrint();">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="https://manager.gimbal.com"><img src="../images/gimbal_logo.png"></a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                      
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Overview
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../index.html">Overview</a></li>
+                            <li><a href="../proximity_overview.html">Proximity Overview</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Context
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu">
+                            <a href="#">iOS</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="../ios_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="../ios_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="../context/context_ios.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown-submenu">
+                            <a href="#">Android</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="../android_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="../android_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="../android_push_quickstart.html">Push Quick Start</a></li> 
+                              <li><a href="../context/context_android.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Proximity
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="../ios_proximity_quickstart.html">Proximity Quick Start</a></li>
+                          <li><a href="../proximity/ios.html">Proximity Developer Guide</a></li>
+                          <li><a href="../ios/html/index.html">Proximity API</a></li>
+                          <li><a href="../ios_proximity_based_communication_guide.html">Proximity Based Communicate Guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../rest.html">REST API</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+    <div class="row-fluid">
+
+    <div class="span12">
+
+        <div class="hero-unit">
+            <h1>Gimbal XCode Project Help</h1>
+
+            <p>Get Gimbal up and running with your iOS App.</p>
+
+        </div>
+
+        <!-- Create a Developer Account -->
+        <div class="row-fluid api_row">
+            <div class="span12">
+
+                <div>
+                    <h1>Adding a Framework/Library</h1>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span12">
+
+                        <p>Adding a Framework or Library to an XCode Project follows the same steps. Below is a
+                            pictorial 'how-to' for adding libz.dylib to your XCode project.</p>
+
+                        <hr/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span12 well">
+
+                <h4>Adding libz.dylib to your project</h4>
+
+                <p>
+                    <br>
+                    <h5>Select your project's Application Target and navigate to the 'Summary' view.</h5>
+                    <br>
+                    <div>
+                        <div class="span"></div>
+                        <div class="span10">
+                            <img src="../images/FYX-add-zlib-screen1.png">
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+                </p>
+                <p>
+                    <h5>Scroll down to the 'Linked Frameworks and Libraries' section and selct the '+' button. A new view
+                        should pop up that allows you to search for the library and add it to your project.</h5>
+                    <br>
+                    <div>
+                        <div class="span"></div>
+                        <div class="span10">
+                            <img src="../images/FYX-add-zlib-screen2.png">
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+                </p>
+                <p>
+                    <h5>On the Project Navigator, click on the framework that was just added and verify the Target Membership is correct.
+                    </h5>
+                    <br>
+                    <div>
+                        <div class="span"></div>
+                        <div class="span10">
+                            <img src="../images/FYX-add-zlib-screen3.png">
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+                </p>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+    <footer class="row-fluid">
+
+         
+
+             <div id="footer" class="span12">
+
+        <p>&copy; 2013 Qualcomm Retail Solutions, Inc. All rights reserved. Gimbal is a trademark of Qualcomm Retail Solutions, Inc. QUALCOMM is a trademark of QUALCOMM Incorporated, registered in the United States and other countries.</p>
+
+            </div>
+         
+
+    </footer>
+
+ 
+
+                
+
+<script src="../js/jquery-1.8.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/prettify.js"></script>
+<script type="text/javascript" src="../js/nav-scrolling.js"></script>
+
+</body>
+</html>

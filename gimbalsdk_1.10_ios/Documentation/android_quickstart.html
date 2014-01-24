@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gimbal Android Quickstart</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/overrides.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" onload="prettyPrint();">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="https://manager.gimbal.com"><img src="images/gimbal_logo.png"></a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                      
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Overview
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Overview</a></li>
+                            <li><a href="proximity_overview.html">Proximity Overview</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Context
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu">
+                            <a href="#">iOS</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="ios_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="ios_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="context/context_ios.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown-submenu">
+                            <a href="#">Android</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="android_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="android_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="android_push_quickstart.html">Push Quick Start</a></li> 
+                              <li><a href="context/context_android.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Proximity
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="ios_proximity_quickstart.html">Proximity Quick Start</a></li>
+                          <li><a href="proximity/ios.html">Proximity Developer Guide</a></li>
+                          <li><a href="ios/html/index.html">Proximity API</a></li>
+                          <li><a href="ios_proximity_based_communication_guide.html">Proximity Based Communicate Guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="rest.html">REST API</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+    <div class="row-fluid">
+
+	<div class="span3">
+		<div id="sidenav" class="well sidebar-nav sidebar-nav-fixed" style="overflow-y:auto;height:auto;">
+			<ul class="nav nav-list">
+				<li><a href="#create_your_developer_account">Create Your Developer Account</a></li>
+				<li><a href="#create_android_app">Create Your Application</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Enable Gimbal <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#create_api_key">Create Your API Key</a></li>
+						<li><a href="#configure_your_application_for_gimbal_sdk">Configure Your Application</a></li>
+						<li><a href="#enable_context_core_connector">Enable Context Core Connector</a></li>
+						<li><a href="#run_application">Run Your Application</a></li>
+					</ul>
+				</li>
+				<li><a href="#learn_more">Learn More</a></li>
+
+			</ul>
+		</div>
+	</div>
+
+    <div class="span9">
+
+        <div class="hero-unit">
+
+            <h1>Android Quick Start</h1>
+
+            <p>Get Gimbal up and running in your Android App.</p>
+
+        </div>
+
+
+        <div id="create_your_developer_account" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Your Developer Account</h1>
+
+        <p>Go to the Gimbal Manager and create an account.</p>
+
+        <p><a href="https://manager.gimbal.com/login/users/sign_up" class="btn btn-primary btn-large"
+              target="_blank">Gimbal Manager &raquo;</a></p>
+    </div>
+
+</div>
+        <div id="create_android_app" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Your Android Application</h1>
+
+        <p>The following steps will set up an application in Eclipse ready for enabling Gimbal features.</p>
+
+    </div>
+</div>
+
+<div id="confirm_your_environment" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Confirm Your Environment</h2>
+
+        <p>Make sure you:</p>
+
+        <div class="well">
+            <ul>
+                <li>Have a device with Android 2.2 or higher</li>
+                <li>Are using <a href='http://www.eclipse.org/downloads/' target='_blank'>Eclipse Indigo</a> (3.7) or higher</li>
+                <li>Have installed the <a href='http://developer.android.com/tools/sdk/eclipse-adt.html' target='_blank'>Eclipse Android ADT plug-in</a></li>
+                <li><a href='http://developer.android.com/sdk/installing/adding-packages.html' target='_blank'>Use the ADT plug-in</a> to download a version of Android greater than or equal to API 8: Android 2.2</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="create_new_eclipse_project" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Create a new Eclipse project</h2>
+
+        <p>In Eclipse choose <code>File > New > Project</code> and search for "Android Application Project" as seen below.</p>
+
+        <p><img src="images/eclipse-android-wizard.png"/></p>
+
+        <p>Fill out your "Application Name", "Project Name", and "Package Name" fields.</p> 
+
+        <p><b><span class="label label-important">Important</span></b> Make sure the "Minimum Required SDK", "Target SDK", and "Compile With" fields are set to <span class="stand_out_text">at least API 8: Android 2.2</span>. Then click through the rest of the "New Android Application" setup wizard.</p>
+
+        <p><img src="images/eclipse-android-project-naming.png"/></p>
+
+    </div>
+</div>
+
+        
+<div id="add_jars" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Add these jars to your project</h2>
+
+        <div class="well">
+            <ul>
+                <li>Context-Core.jar</li>
+                <li>Context-Location.jar</li>
+                <li>android-logging.jar</li>
+                <li>spring-android-rest-template-1.0.1.RELEASE.jar</li>
+                <li>spring-android-core-1.0.1.RELEASE.jar </li>
+            </ul>
+        </div>
+
+        <p><b><span class="label label-info">Note</span></b> You will find these jars in the <code>client-sample-mall-mart-embed/libs</code> folder inside the Gimbal SDK zip file.</p>
+
+        <p>Add jars to your Android application by copy and pasting them into the <code>libs</code> folder of your android project.</p>
+
+        <p>Your project should now look similar to this:</p>
+
+        <p><img src="images/eclipse-libraries.png"/></p>
+
+    </div>
+</div>
+
+<div id="create_api_key" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Create Your Application API Key</h2>
+
+        <p>Follow the link below to register your application.</p>
+
+        <p><b><span class="label label-info">Note</span></b> This link should take you to the "Sandbox" environment. You can check by looking in the top right part of the page and verifying that it says "Sandbox" instead of "Production". Sandbox is an environment for developers to build in before releasing and does not require you to manually generate an application fingerprint.</p>
+
+        <p><a href="https://sandbox.gimbal.com/setup"
+              class="btn btn-primary btn-large" target="_blank">Create Application API Key &raquo;</a></p>
+
+        <p>Fill in the fields to look something like this: </p>
+
+        <p><img src="images/generate-android-api-key.png"></p>
+
+        <p>Then click Generate.</p>
+
+        <p>Below the "Generate Client API Key" box you were just using, a new box should appear with your newly generated API key.</p>
+
+    </div>
+</div>
+
+<div id="configure_your_application_for_gimbal_sdk" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Configure Your Application for the Gimbal SDK</h2>
+
+        <p>In order for your application to use Gimbal API's, it has to authenticate itself by providing your API key, name, and desired capabilities. You will need to create a file called <code>usercontext.properties</code> at the location <code>assets/properties</code>. You may have to create the <code>properties</code> folder yourself.</p>
+
+        <p><img src="images/usercontext-properties-tree.png"></p>
+
+        <p>You will add three lines to your file so it looks like the following:</p>
+
+        <p><img src="images/usercontext-properties.png"></p>
+
+        <p>
+            <div class="well">
+                <ul>
+                    <li>Line 1 specifies your API key that you just generated. Copy and paste it into the specified spot.</li>
+                    <li>Line 2 is the text you wish to use in your application to describe the value-added feature you are providing for your users.</li>
+                    <li>Line 3 tells Gimbal that you will be using its geofencing capabilities (this is case-sensitive).</li>
+                </ul>
+            </div>
+        </p>
+
+        <p>To allow Gimbal location to function, you need to add a few elements to your <code>AndroidManifest.xml</code> file.</p>
+
+        <p>First, you need to specify the permissions that Gimbal needs to function properly. They are shown below.</p>
+
+        <pre class="prettyprint lang-xml">
+            &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+            &lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;
+            &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+            &lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt;
+            &lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;
+            &lt;uses-permission android:name="android.permission.BATTERY_STATS" /&gt;
+            &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;
+            &lt;uses-permission android:name="android.permission.WRITE_SETTINGS" /&gt;
+            &lt;uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /&gt;
+        </pre>
+
+        <p>Then, you need to add a service and a receiver to your application. Make sure you place them inside of the <code>&lt;application&gt;&lt;/application&gt;</code> XML element. Where it says "com.companyname.applicationname" in red, replace it with your application's package name. (the package name you entered when you generated your API key)</p> 
+
+        <pre class="prettyprint lang-xml">
+            &lt;service
+            android:name="com.qualcommlabs.usercontext.service.GimbalService"
+            android:exported="false" &gt;
+                &lt;intent-filter&gt;
+                   &lt;action android:name="<span class="nocode">com.companyname.applicationname</span>.service.USER_CONTEXT_SERVICE" /&gt;
+                 &lt;/intent-filter&gt;
+            &lt;/service&gt;
+
+            &lt;receiver
+            android:name="com.qualcommlabs.usercontext.service.UserContextServiceStartStopReceiver"
+            android:enabled="true" &gt;
+                &lt;intent-filter&gt;
+                     &lt;action android:name="android.intent.action.BOOT_COMPLETED" /&gt;
+                &lt;/intent-filter&gt;
+                &lt;intent-filter&gt;
+                    &lt;action android:name="android.intent.action.ACTION_SHUTDOWN" /&gt;
+                &lt;/intent-filter&gt;
+            &lt;/receiver&gt;
+        </pre>
+
+    </div>
+</div>
+
+<div id="enable_context_core_connector" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Enable Context Core Connector</h2>
+
+        <p>Now, we will add code to your MainActivity which is located in <code>src/com.companyname.applicationname/MainActivity.java</code>. This file should have been generated automatically when you created the project. It will contain a few overridden methods by default. You can leave them the way they are for now.</p>
+
+        <p><img src="images/eclipse-main-activity.png"></p>
+
+        <p><b><span class="label label-important">Important</span></b> We are adding the code here for the purpose of demonstrating how to quickly
+        get an application functioning. The location of this code in your
+        application will depend on your design and intended usage of Gimbal.</p>
+
+        <p>First, import the necessary files: </p>
+
+        <pre class="prettyprint lang-java">
+            import android.util.Log;
+
+            import com.qualcommlabs.usercontext.Callback;
+            import com.qualcommlabs.usercontext.ContextCoreConnector;
+            import com.qualcommlabs.usercontext.ContextCoreConnectorFactory;
+        </pre>
+
+        <p>Then, in your <code>onCreate()</code> method obtain an instance of the <code>ContextCoreConnector</code> and store it in a field. At the end, we call a private helper method called <code>checkContextConnectorStatus()</code>. Don't worry about any errors Eclipse gives you for writing this line because we will implement the method in a few steps: </p>
+
+        <pre class="prettyprint lang-java">
+            private ContextCoreConnector contextCoreConnector;
+            
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_location);
+                contextCoreConnector = ContextCoreConnectorFactory.get(this);
+                checkContextConnectorStatus();
+            }
+        </pre>
+
+        <p>Finally, write the <code>checkContextConnectorStatus()</code> method we mentioned earlier. First, it checks to see if the permission has been enabled by the user. If it has then we use other Gimbal features (Geofencing, Communication, Interest Sensing, etc). If it hasn't then we call <code>enable()</code>. This prompts the user to accept terms of service and enable gimbal. If <code>enable()</code> succeeds, we are ready to use Gimbal features. Otherwise, we log the error message: </p>
+
+        <pre class="prettyprint lang-java">
+           private void checkContextConnectorStatus() {
+                if (contextCoreConnector.isPermissionEnabled()) {
+                    // Gimbal is already enabled
+                }
+                else {
+                    contextCoreConnector.enable(this, new Callback&lt;Void&gt;() {
+
+                        @Override
+                        public void success(Void arg0) {
+                            // Gimbal is ready
+                        }
+
+                        @Override
+                        public void failure(int arg0, String arg1) {
+                            Log.e("failed to enable", arg1);
+                        }
+                    });
+                }
+            }
+
+        </pre>
+
+    </div>
+</div>
+
+<div id="run_application" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Run Your Application</h2>
+
+        <p>Now, you are ready to add varioud Gimbal features. In order to launch the application make sure your phone is plugged in and in debug mode, then in Eclipse right click on your project and click <code>Run as -> Android Application</code>. Upon successful launch, you will be prompted to accept Gimbal terms of service.</p>
+    </div>
+</div>
+
+
+        <div id="learn_more" class="row-fluid">
+            <div style="height: 40px;"></div>
+            <div class="span12">
+
+                <h1>Learn More</h1>
+
+                <div class="row-fluid">
+                    <div class="span12">
+
+                        <p>For additional details on how to leverage the SDK functionality, refer to the sample
+                            applications and documentation included in the zip file provided.</p>
+
+                        <p><a href="context/context_android.html" class="btn btn-primary btn-large" target="_blank">Detailed Gimbal
+                            Android Guide &raquo;</a></p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <footer class="row-fluid">
+
+         
+
+             <div id="footer" class="span12">
+
+        <p>&copy; 2013 Qualcomm Retail Solutions, Inc. All rights reserved. Gimbal is a trademark of Qualcomm Retail Solutions, Inc. QUALCOMM is a trademark of QUALCOMM Incorporated, registered in the United States and other countries.</p>
+
+            </div>
+         
+
+    </footer>
+
+ 
+
+                
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/nav-scrolling.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gimbal iOS Quickstart</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/overrides.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" onload="prettyPrint();">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="https://manager.gimbal.com"><img src="images/gimbal_logo.png"></a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                      
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Overview
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Overview</a></li>
+                            <li><a href="proximity_overview.html">Proximity Overview</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Context
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu">
+                            <a href="#">iOS</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="ios_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="ios_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="context/context_ios.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown-submenu">
+                            <a href="#">Android</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="android_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="android_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="android_push_quickstart.html">Push Quick Start</a></li> 
+                              <li><a href="context/context_android.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Proximity
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="ios_proximity_quickstart.html">Proximity Quick Start</a></li>
+                          <li><a href="proximity/ios.html">Proximity Developer Guide</a></li>
+                          <li><a href="ios/html/index.html">Proximity API</a></li>
+                          <li><a href="ios_proximity_based_communication_guide.html">Proximity Based Communicate Guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="rest.html">REST API</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+    <div class="row-fluid">
+
+    <div class="span3">
+        <div id="sidenav" class="well sidebar-nav sidebar-nav-fixed" style="overflow-y:auto;height:auto;">
+            <ul class="nav nav-list">
+                <li><a href="#create_your_developer_account">Create Your Developer Account</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Create Your Application <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#confirm_your_environment">Confirm Your Environment</a></li>
+                        <li><a href="#create_new_xcode_project">Create a new Xcode Project</a></li>
+                        <li><a href="#add_ios_frameworks_and_libraries">Add iOS Frameworks</a></li>
+                        <li><a href="#add_fyx_frameworks">Add Gimbal Frameworks</a></li>
+                        <li><a href="#verify_your_target_membership">Verify Target</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Enable Gimbal <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#create_api_key">Create Your API Key</a></li>
+                        <li><a href="#create_usercontext">Create Properties</a></li>
+                        <li><a href="#enable_core_connector">Enable Context Core Connector</a></li>
+                    </ul>
+                </li>
+                <li><a href="#learn_more">Learn More</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="span9">
+
+        <div class="hero-unit">
+
+            <h1>iOS Quick Start</h1>
+
+            <p>Get Gimbal up and running in your iOS App.</p>
+
+        </div>
+
+
+        <div id="create_your_developer_account" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Your Developer Account</h1>
+
+        <p>Go to the Gimbal Manager and create an account.</p>
+
+        <p><a href="https://manager.gimbal.com/login/users/sign_up" class="btn btn-primary btn-large"
+              target="_blank">Gimbal Manager &raquo;</a></p>
+    </div>
+
+</div>
+        <div id="create_app" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Your iOS Application</h1>
+
+        <p>The following steps will set up an application in Xcode ready for enabling Gimbal features.</p>
+
+    </div>
+</div>
+
+<div id="confirm_your_environment" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Confirm Your Environment</h2>
+
+        <p>Make sure you are:</p>
+
+        <div class="well">
+            <ul>
+                <li>Using Xcode 4.4 or higher</li>
+                <li>Targeting iOS 5.0 or higher</li>
+                <li>Using an iOS device with Bluetooth 4.0. Here is a list of the compatible devices:
+                    <ul>
+                        <li>iPhone 4S or newer</li>
+                        <li>iPad 3 or newer</li>
+                        <li>iPad mini</li>
+                        <li>iPod touch (5th Generation)</li>
+                    </ul>
+                </li>
+                <li>Have a valid <a href='https://developer.apple.com/programs/register/' target='_blank'>Apple
+                    Developer Account</a></li>
+                <li>Have a valid <a
+                        href='http://developer.apple.com/library/ios/#recipes/xcode_help-devices_organizer/articles/obtain_certificates_and_provisioning_profiles.html'
+                        target='_blank'> Apple Provisioning Profile</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="create_new_xcode_project" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Create a new Xcode project</h2>
+
+        <p>In Xcode choose <code>File > New > Project</code> and create a new Application</p>
+
+    </div>
+</div>
+
+<div id="add_ios_frameworks_and_libraries" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Add these iOS Frameworks and Libraries to your project</h2>
+
+        <div class="well">
+            <ul>
+                
+                <li>CoreBluetooth.framework</li>
+                <li>CoreLocation.framework</li>
+                <li>CoreData.framework</li>
+                <li>libz.dylib</li>
+                <li>MapKit.framework</li>   
+                <li>Security.framework</li>
+            </ul>
+        </div>
+
+        <p><i>Having trouble adding these to your project? <a href="proximity/ios_adding_frameworks_and_libraries.html">Here's
+            some help</a></i></p>
+    </div>
+</div>
+
+<div id="add_fyx_frameworks" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Add these Gimbal Frameworks to your project</h2>
+
+        <p><b><span class="label label-important">Important</span></b> Right click the Frameworks folder and choose the "Add files to ..." option to add these frameworks.</p>
+        <p>
+        It is strongly recommended to add the Gimbal Frameworks using this method to ensure that the Target Membership checkbox is enabled properly.  If an alternate method is used, then the Target Membership of the frameworks must be verified and checked.</p>
+        <div class="well">
+            <ul>
+                <li>Common.embeddedframework</li>
+                <li>ContextCore.embeddedframework</li>
+                <li>ContextLocation.embeddedframework</li>
+                <li>FYX.framework</li>
+                <li>NetworkServices.embeddedframework</li>
+            </ul>
+        </div>
+
+        <p><b><span class="label label-info">Note</span></b> You will find these frameworks in the
+            <code>Frameworks</code> folder inside the Gimbal SDK zip file.</p>
+
+        <p>Your frameworks directory should now look like this:</p>
+
+        <p><img src="images/frameworks.png"/></p>
+
+    </div>
+</div>
+
+<div id="verify_your_target_membership" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h2>Verify Target Membership</h2>
+
+        <p>For each Gimbal Framework, verify the Target Membership checkbox is set:</p>
+
+        <img src="images/targetMembership01.png"/>
+    </div>
+</div>
+
+
+<div id="verify_your_deployment_target_version" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h2>Verify your deployment target version</h2>
+
+        <p>Verify your deployment target matches the iOS version of your device:</p>
+
+        <img src="images/deploymentTarget.png"/>
+    </div>
+</div>
+        <div id="create_api_key" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Create Your Application API Key</h2>
+
+        <p>Follow the link below to register your application.</p>
+
+        <p><a href="https://sandbox.gimbal.com/setup"
+              class="btn btn-primary btn-large" target="_blank">Create Application API Key &raquo;</a></p>
+
+        <p>Bundle Identifier is needed when you register your application. For example bundle identifier
+            is generated during Xcode project creation</p>
+
+        <p><img src="images/create-xcode-project.png"></p>
+
+        <p>Once your application is registered you receive your API key.</p>
+
+        <p><img src="images/generate-ios-api-key.png"></p>
+
+    </div>
+
+</div>
+
+<div id="create_usercontext" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Create UserContext.plist properties file</h2>
+
+        <p>Copy API key you created in the Gimbal Manager</p>
+
+        <p><a href="https://sandbox.gimbal.com/setup"
+              class="btn btn-primary btn-large" target="_blank">Gimbal Manager &raquo;</a></p>
+
+        <p>Create a plist file named <code>UserContext.plist</code> in your project and add the following
+            properties. Please note that this screen shot is for creating an application against Sandbox. If you wish to build this application against Production, you must leave the
+            "Value" column for SANDBOX_API_KEY blank, insert your production key for PRODUCTION_API_KEY and add a Boolean property called APPSTORE_BUILD. Set its value to YES.</p>
+    </div>
+
+    <p><img src="images/ios-usercontext-properties.png"></p>
+
+</div>
+
+<div id="enable_core_connector" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Enable Context Core Connector</h2>
+
+        <p>Add this code to the top of your AppDelegate implementation (.m) file.</p>
+
+        <pre class="prettyprint lang-js">
+
+    #import &lt;ContextCore/QLContextCoreConnector.h&gt;
+        </pre>
+
+        <p>Add this code to your <code>application: didFinishLaunchingWithOptions:</code> method in your AppDelegate.
+        </p>
+
+        <pre class="prettyprint lang-js">
+    QLContextCoreConnector *connector = [QLContextCoreConnector new];
+    [connector enableFromViewController:self.window.rootViewController success:^
+     {
+         NSLog(@"Gimbal enabled");
+     } failure:^(NSError *error) {
+         NSLog(@"Failed to initialize gimbal %@", error);
+     }];
+
+        </pre>
+
+        <p><b><span class="label label-important">Important</span></b> The location of this code in your
+            application will
+            depend on your design and intended usage of Gimbal. For the purpose of demonstrating how to quickly
+            get an application functioning we have placed it in the <code>AppDelegate</code></p>
+
+    </div>
+</div>
+
+        <div id="learn_more" class="row-fluid">
+            <div style="height: 40px;"></div>
+            <div class="span12">
+
+                <h1>Learn More</h1>
+
+                <div class="row-fluid">
+                    <div class="span12">
+
+                        <p>For additional details on how to leverage the SDK functionality, refer to the sample
+                            applications and documentation included in the zip file provided.</p>
+
+                        <p><a href="context/context_ios.html" class="btn btn-primary btn-large" target="_blank">Gimbal
+                            iOS
+                            Guide &raquo;</a></p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <footer class="row-fluid">
+
+         
+
+             <div id="footer" class="span12">
+
+        <p>&copy; 2013 Qualcomm Retail Solutions, Inc. All rights reserved. Gimbal is a trademark of Qualcomm Retail Solutions, Inc. QUALCOMM is a trademark of QUALCOMM Incorporated, registered in the United States and other countries.</p>
+
+            </div>
+         
+
+    </footer>
+
+ 
+
+                
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/nav-scrolling.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gimbal Geofence Android Quickstart</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/overrides.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" onload="prettyPrint();">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="https://manager.gimbal.com"><img src="images/gimbal_logo.png"></a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                      
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Overview
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Overview</a></li>
+                            <li><a href="proximity_overview.html">Proximity Overview</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Context
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu">
+                            <a href="#">iOS</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="ios_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="ios_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="context/context_ios.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown-submenu">
+                            <a href="#">Android</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="android_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="android_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="android_push_quickstart.html">Push Quick Start</a></li> 
+                              <li><a href="context/context_android.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Proximity
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="ios_proximity_quickstart.html">Proximity Quick Start</a></li>
+                          <li><a href="proximity/ios.html">Proximity Developer Guide</a></li>
+                          <li><a href="ios/html/index.html">Proximity API</a></li>
+                          <li><a href="ios_proximity_based_communication_guide.html">Proximity Based Communicate Guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="rest.html">REST API</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+    <div class="row-fluid">
+
+	<div class="span3">
+		<div id="sidenav" class="well sidebar-nav sidebar-nav-fixed" style="overflow-y:auto;height:auto;">
+			<ul class="nav nav-list">
+                <li><a href="#listen_for_places">Listen for Place Events</a></li>
+                <li><a href="#create_geofence">Create a Geofence</a></li>
+                <li><a href="#run_application">Run Your Application</a></li>
+				<li><a href="#learn_more">Learn More</a></li>
+			</ul>
+		</div>
+	</div>
+
+    <div class="span9">
+
+        <div class="hero-unit">
+
+            <h1>Android Geofence Quick Start</h1>
+
+            <p>Get Gimbal up and running in your Android App.</p>
+
+        </div>
+
+        
+<div id="gimbal_quickstart" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+		<h1>Setup Gimbal Application</h1>
+
+		<p><b><span class="label label-important">Important</span></b> This guide assumes you have a Android project setup with Gimbal. Please follow Gimbal Quick Start guide if you have not yet setup an Android project with Gimbal.</p>
+        
+        <p><a href="android_quickstart.html" class="btn btn-primary btn-large"
+              target="_blank">Gimbal Android Quickstart &raquo;</a></p>
+
+    </div>
+</div>
+        <div id="listen_for_places" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Listen for Places</h2>
+
+        <p>Now, we will continue adding code to your <code>MainActivity</code>. This code will allow you to start listening for places. </p>
+
+        <p>First, import some more files: </p>
+
+        <pre class="prettyprint lang-java">
+            import android.widget.Toast;
+
+            import com.qualcommlabs.usercontext.ContextPlaceConnector;
+            import com.qualcommlabs.usercontext.ContextPlaceConnectorFactory;
+            import com.qualcommlabs.usercontext.PlaceEventListener;
+            import com.qualcommlabs.usercontext.protocol.PlaceEvent;
+        </pre>
+
+        <p>Then, add some fields to hold an instance of the <code>ContextPlaceConnector</code> and a <code>PlaceEventListener</code>. Initialize your <code>PlaceEventListener</code> and tell it what to do when a place event occurs (e.g. when you break a geofence). The one we have made will log and toast the name and id of any geofences that are triggered: </p>
+
+        <pre class="prettyprint lang-java">
+            private ContextPlaceConnector contextPlaceConnector;
+            private PlaceEventListener placeEventListener = new PlaceEventListener() {
+
+                    @Override
+                    public void placeEvent(PlaceEvent event) {
+                        String placeNameAndId = "id: " + event.getPlace().getId() + " name: " + event.getPlace().getPlaceName();
+                        Toast toast = Toast.makeText(getApplicationContext(), placeNameAndId, Toast.LENGTH_LONG);
+                        toast.show();
+                        Log.i("found place", placeNameAndId);
+                    }
+                };
+        </pre>
+
+        <p>In your <code>onCreate()</code> method add a line to obtain the instance of the <code>ContextPlaceConnector</code>. Your <code>onCreate()</code> method should end up like this: </p>
+
+        <pre class="prettyprint lang-java">
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_location);
+                contextCoreConnector = ContextCoreConnectorFactory.get(this);
+                contextPlaceConnector = ContextPlaceConnectorFactory.get(this);
+                checkContextConnectorStatus();
+            }
+
+            private void checkContextConnectorStatus() {
+                if (contextCoreConnector.isPermissionEnabled()) {
+                    startListeningForGeofences();
+                }
+                else {
+                    contextCoreConnector.enable(this, new Callback&lt;Void&gt;() {
+
+                        @Override
+                        public void success(Void arg0) {
+                            startListeningForGeofences();
+                        }
+
+                        @Override
+                        public void failure(int arg0, String arg1) {
+                            Log.e("failed to enable", arg1);
+                        }
+                    });
+                }
+            }
+
+        </pre>
+
+        <p>Finally, implement the <code>ForGeofences()</code> method that we call from <code>checkContextConnectorStatus()</code>. In this case, it is really simple and just adds the <code>PlaceEventListener</code> we made earlier to the <code>ContextPlaceConnector</code>: </p>
+
+        <pre class="prettyprint lang-java">
+            private void startListeningForGeofences() {
+                contextPlaceConnector.addPlaceEventListener(placeEventListener);
+            }
+        </pre>
+
+    </div>
+</div>
+
+<div id="create_geofence" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Create a Geofence</h2>
+
+        <p>Before you run your application, you want to create a geofence for your current location so you will see a place event trigger when your
+        application starts.</p>
+
+        <p><b><span class="label label-info">Note</span></b> Make sure the geofence you create is at your
+            current location if you want it to trigger when your app launches.</p>
+
+        <p><a href="https://sandbox.gimbal.com/geofence/new"
+              class="btn btn-primary btn-large" target="_blank">Create Geofence &raquo;</a></p>
+
+        <p><img src="images/create-geofence.png"></p>
+
+    </div>
+</div>
+
+<div id="run_application" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Run Your Application</h2>
+
+        <p>Now, everything should be ready for you to find some geofences. Make sure your phone is plugged in and in debug mode, then in Eclipse right click on your project and click <code>Run as -> Android Application</code>. Upon successful launch, you will be prompted to accept Gimbal terms of service. Once you do that you will see a toast and log entry with the name and id of the geofence you just made assuming it is around your location.</p>
+
+        <p><b><span class="label label-info">Note</span></b> You will only get the geofence entered event when you install the application for the first time. All subsequent times you will have to leave the geofence and re-enter to get another event.</p>
+
+    </div>
+</div>
+
+
+        <div id="learn_more" class="row-fluid">
+            <div style="height: 40px;"></div>
+            <div class="span12">
+
+                <h1>Learn More</h1>
+
+                <div class="row-fluid">
+                    <div class="span12">
+
+                        <p>For additional details on how to leverage the SDK functionality, refer to the sample
+                            applications and documentation included in the zip file provided.</p>
+
+                        <p><a href="Gimbal_SDK_for_Android.pdf" class="btn btn-primary btn-large" target="_blank">Detailed Gimbal
+                            Android Guide &raquo;</a></p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <footer class="row-fluid">
+
+         
+
+             <div id="footer" class="span12">
+
+        <p>&copy; 2013 Qualcomm Retail Solutions, Inc. All rights reserved. Gimbal is a trademark of Qualcomm Retail Solutions, Inc. QUALCOMM is a trademark of QUALCOMM Incorporated, registered in the United States and other countries.</p>
+
+            </div>
+         
+
+    </footer>
+
+ 
+
+                
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/nav-scrolling.js"></script>
+
+</body>
+</html>

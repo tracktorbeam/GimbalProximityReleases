@@ -1,0 +1,3922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gimbal REST API</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/overrides.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" onload="prettyPrint();">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="https://manager.gimbal.com"><img src="images/gimbal_logo.png"></a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                      
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Overview
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Overview</a></li>
+                            <li><a href="proximity_overview.html">Proximity Overview</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Context
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu">
+                            <a href="#">iOS</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="ios_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="ios_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="context/context_ios.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown-submenu">
+                            <a href="#">Android</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="android_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="android_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="android_push_quickstart.html">Push Quick Start</a></li> 
+                              <li><a href="context/context_android.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Proximity
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="ios_proximity_quickstart.html">Proximity Quick Start</a></li>
+                          <li><a href="proximity/ios.html">Proximity Developer Guide</a></li>
+                          <li><a href="ios/html/index.html">Proximity API</a></li>
+                          <li><a href="ios_proximity_based_communication_guide.html">Proximity Based Communicate Guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="rest.html">REST API</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+    <div id="rest-api" class="row-fluid">
+<div class="span3">
+    <div id="sidenav" class="well sidebar-nav sidebar-nav-fixed" style="overflow-y:auto;height:auto;">
+        <ul class="nav nav-list">
+            <li class="nav-header"><a href="#authorization">Authorization</a></li>
+            <li class="nav-header"><a href="#content_type">Content Type</a></li>
+            <li class="nav-header"><a href="#response_status">Response Status</a></li>
+            <li class="nav-header"><a href="#export_analytics">Export Analytics</a></li>
+            <li class="nav-header"><a href="#export_content_analytics">Export Content Analytics</a></li>
+            <li class="nav-header"><a href="#export_content_geofence_analytics">Export Content Geofence Analytics</a></li>
+            <li class="nav-header"><a href="#applications_attributes">Applications</a></li>
+            <li class="dropdown">
+                <a class="nav-header dropdown-toggle" data-toggle="dropdown" href="#">Push Limits <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#push_limit_attributes">Push limit attributes</a></li>
+                    <li><a href="#push_limit_get">Get</a></li>
+                    <li><a href="#push_limit_create">Create</a></li>
+                    <li><a href="#push_limit_delete">Delete</a></li>
+                </ul>
+            </li>
+            <li class="nav-header">Geofence</li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Geofences <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#geofences_attributes">Geofence Attributes</a></li>
+                    <li><a href="#geofences_get_all">Get All</a></li>
+                    <li><a href="#geofences_get">Get</a></li>
+                    <li><a href="#geofences_create">Create</a></li>
+                    <li><a href="#geofences_update">Update</a></li>
+                    <li><a href="#geofences_delete">Delete</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bulk Geofences <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#bulk_geofences_attributes">Bulk Geofence Attributes</a></li>
+                    <li><a href="#bulk_geofences_create">Create</a></li>
+                    <li><a href="#bulk_geofences_update">Update</a></li>
+                    <li><a href="#bulk_geofences_delete">Delete</a></li>
+                </ul>
+            </li>
+            <li class="nav-header">Proximity</li>
+            <li><a href="#sightings_callback">Sightings Callback</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">OAuth <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#oauth_flow">OAuth Call Flow</a></li>
+                    <li><a href="#token_info">Token Information</a></li>
+                    <li><a href="#revoke_token">Revoke Token</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Transmitters <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#transmitters_activate">Activate Transmitter</a></li>
+                    <li><a href="#transmitters_deactivate">Deactivate Transmitter</a></li>
+                    <li><a href="#transmitters_get">Get Transmitter</a></li>
+                    <li><a href="#transmitters_get_all">Get All Transmitters</a></li>
+                    <li><a href="#transmitters_update_name">Update Transmitter Name</a></li>
+                </ul>
+            </li>
+            <li class="nav-header">Communicate</li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Communication <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#communication_attributes">Communication Attributes</a></li>
+                    <li><a href="#communications_get_all">Get All</a></li>
+                    <li><a href="#communications_get">Get</a></li>
+                    <li><a href="#communications_update">Update</a></li>
+                    <li><a href="#communications_create">Create</a></li>
+                    <li><a href="#communications_delete">Delete</a></li>
+                    <li><a href="#communications_publish">Publish</a></li>
+                    <li><a href="#communications_stop">Stop</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Notification <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#notification_attributes">Notification Attributes</a></li>
+                    <li><a href="#notification_get">Get</a></li>
+                    <li><a href="#notification_create">Create</a></li>
+                    <li><a href="#notification_delete">Delete</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Geofence Targets<b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#geofence_target_fields">Geofence Target Attributes</a></li>
+                    <li><a href="#geofence_target_get_all">Get</a></li>
+                    <li><a href="#geofence_target_create">Create</a></li>
+                    <li><a href="#geofence_target_delete">Delete</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Time Trigger <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#time_trigger_attributes">Time Trigger Attributes</a></li>
+                    <li><a href="#time_trigger_get">Get</a></li>
+                    <li><a href="#time_trigger_create">Create</a></li>
+                    <li><a href="#time_trigger_delete">Delete</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Geofence Trigger <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#geofence_trigger_attributes">Geofence Trigger Attributes</a></li>
+                    <li><a href="#geofence_trigger_get">Get</a></li>
+                    <li><a href="#geofence_trigger_create">Create</a></li>
+                    <li><a href="#geofence_trigger_delete">Delete</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Time Filter <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#time_filter_attributes">Time Filter Attributes</a></li>
+                    <li><a href="#time_filter_get">Get</a></li>
+                    <li><a href="#time_filter_create">Create</a></li>
+                    <li><a href="#time_filter_delete">Delete</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Neighborhood Filters <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#neighborhoods_attributes">Neighborhoods Attribute</a></li>
+                    <li><a href="#neighborhoods_get_all">Get All</a></li>
+                    <li><a href="#neighborhoods_get">Get</a></li>
+                    <li><a href="#neighborhoods_create">Create</a></li>
+                    <li><a href="#neighborhoods_delete">Delete</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Custom Profile Attributes <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#custom_profile_attributes">Custom Profile Attributes</a></li>
+                    <li><a href="#custom_attributes_get_all">Get</a></li>
+                    <li><a href="#custom_attributes_create">Create</a></li>
+                    <li><a href="#custom_attributes_delete">Delete</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Communication Attributes <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#communication_attributes_fields">Communication Attributes</a></li>
+                    <li><a href="#communication_attributes_get_all">Get</a></li>
+                    <li><a href="#communication_attributes_create">Create</a></li>
+                    <li><a href="#communication_attributes_delete">Delete</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Audience Filter<b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#audience_filter_attributes">Audience Filters</a></li>
+                    <li><a href="#audience_filter_all_profile_attributes">All Profile Attributes</a></li>
+                    <li><a href="#audience_filter_get_all">Get</a></li>
+                    <li><a href="#audience_filter_create">Create</a></li>
+                    <li><a href="#audience_filter_delete">Delete</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="span9">
+
+<!-- Introduction -->
+<div class="hero-unit">
+    <h1>Gimbal REST API</h1>
+
+    <p>This document describes a Restful server API for interacting with the Gimbal service.</p>
+
+</div>
+
+
+<div id="api_endpoints" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h1>API Endpoints</h1>
+        <hr>
+            <span>
+                <a href="http://manager.gimbal.com/api/" class="external-link" rel="nofollow">https://manager.gimbal.com/api/</a>
+            </span>
+        <br>
+            <span>
+                <a href="http://sandbox.gimbal.com/api/" class="external-link" rel="nofollow">https://sandbox.gimbal.com/api/</a>
+            </span>
+        <br>
+            <span>
+                <a href="https://api.getfyx.com" class="external-link" rel="nofollow">https://api.getfyx.com</a>
+            </span>
+
+    </div>
+</div>
+
+<!-- Authorization -->
+<div id="authorization" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Authorization</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description</h2>
+
+                <p>The Gimbal API's require the <code>AUTHORIZATION</code> HTTP header. You can find your
+                    organization's API Key in the Gimbal Manager.</p>
+                <pre class="prettyprint lang-js">AUTHORIZATION: Token token=my_gimbal_api_key</pre>
+
+                <p><span class="label label-important">Important</span> Some Proximity APIs require OAuth access tokens.
+                    See below for more information about OAuth.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Content Type -->
+<div id="content_type" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Content Type</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description</h2>
+
+                <p>The Gimbal API's support JSON content type and should be specified in the <code>Content-Type</code>
+                    HTTP header as <code>"application/json"</code></p>
+                <pre class="prettyprint lang-js">Content-Type: application/json</pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Response Status -->
+<div id="response_status" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Response Status</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description</h2>
+
+                <p>The following is the generic list of response status codes used by the API.</p>
+
+                <h3>Response Status</h3>
+                <table class='table table-striped table-bordered table-condensed'>
+                    <thead>
+                    <tr>
+                        <th>HTTP Response Status</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>200</td>
+                        <td>Success</td>
+                    </tr>
+                    <tr>
+                        <td>401</td>
+                        <td>Unauthorized</td>
+                    </tr>
+                    <tr>
+                        <td>422</td>
+                        <td>Unprocessable Entity</td>
+                    </tr>
+                    <tr>
+                        <td>404</td>
+                        <td>Resource Not Found</td>
+                    </tr>
+                    <tr>
+                        <td>500</td>
+                        <td>Unexpected Error</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Export Analytics-->
+<div id="export_analytics" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Export analytics with filters</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve analytics in CSV format for your organization.<br/></p>
+                <i>Note: if no geofence_ids is passed in then geofences will not be used as filtering</i>
+
+                <h1>Export Analytics Attributes</h1>
+
+                <table class='table table-striped table-bordered table-condensed'>
+                    <thead>
+                    <tr>
+                        <th>Attribute (<span style="color: red">*</span> is required)</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><span style="color: red">*</span>start_date</td>
+                        <td>Start date for the filter</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: red">*</span>end_date</td>
+                        <td>End date for the filter</td>
+                    </tr>
+                    <tr>
+                        <td>geofence_ids</td>
+                        <td>Geofences to be filtered on</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/export_analytics</code>
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "start_date" : "2013-01-01",
+        "end_date" : "2013-01-30",
+        "geofence_ids" : [1,2]
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Export Content Analytics-->
+<div id="export_content_analytics" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Export content analytics with filters</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve content related analytics in CSV format for your organization.<br/></p>
+                <i>Note: if no geofence_ids is passed in then geofences will not be used as filtering</i>
+
+                <h1>Export Content Analytics Attributes</h1>
+
+                <table class='table table-striped table-bordered table-condensed'>
+                    <thead>
+                    <tr>
+                        <th>Attribute (<span style="color: red">*</span> is required)</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>start_date</td>
+                        <td>Start date for the filter</td>
+                    </tr>
+                    <tr>
+                        <td>end_date</td>
+                        <td>End date for the filter</td>
+                    </tr>
+                    <tr>
+                        <td>geofence_ids</td>
+                        <td>Geofences to be filtered on</td>
+                    </tr>
+                    <tr>
+                        <td>communication_ids</td>
+                        <td>Communications to be filtered on</td>
+                    </tr>
+                    <tr>
+                        <td>event_type</td>
+                        <td>Could be "CONTENT_CLICKED", "CONTENT_NOTIFIED", "CONTENT_DELIVERED", "CONTENT_DISPLAYED"</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/content_analytics/contents</code>
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "start_date" : "2013-01-01",
+        "end_date" : "2013-01-30",
+        "geofence_ids" : [1,2],
+        "communication_ids" : [2, 3],
+        "event_type" : ["CONTENT_CLICKED", "CONTENT_DELIVERED"]
+
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Export Content Geofence Analytics-->
+<div id="export_content_geofence_analytics" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Export content geofence analytics with filters</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve analytics in CSV format for your organization. Information regarding a geofence and its associated communications will be displayed.<br/></p>
+                <i>Note: if no geofence_ids is passed in then geofences will not be used as filtering</i>
+
+                <h1>Export Content Geofence Analytics Attributes</h1>
+
+                <table class='table table-striped table-bordered table-condensed'>
+                    <thead>
+                    <tr>
+                        <th>Attribute (<span style="color: red">*</span> is required)</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>start_date</td>
+                        <td>Start date for the filter</td>
+                    </tr>
+                    <tr>
+                        <td>end_date</td>
+                        <td>End date for the filter</td>
+                    </tr>
+                    <tr>
+                        <td>geofence_ids</td>
+                        <td>Geofences to be filtered on</td>
+                    </tr>
+                    <tr>
+                        <td>communication_ids</td>
+                        <td>Communications to be filtered on</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/content_analytics/geofences</code>
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "start_date" : "2013-01-01",
+        "end_date" : "2013-01-30",
+        "geofence_ids" : [1,2],
+        "communication_ids" : [2, 3]
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Applications attributes-->
+<div id="applications_attributes">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h1>Application Attributes</h1>
+
+        <table class='table table-striped table-bordered table-condensed'>
+            <thead>
+            <tr>
+                <th>Attribute (<span style="color: red">*</span> is required)</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>platform</td>
+                <td>Platform on which the application will run</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>The bundle id or package name of the application</td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>API key of the application</td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+    </div>
+
+</div>
+
+<!-- Applications Get All-->
+<div id="applications_get_all" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get all Applications</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve all applications for your organization.</p>
+
+                <h3>Application Attributes</h3>
+
+                <table class='table table-striped table-bordered table-condensed'>
+                    <thead>
+                    <tr>
+                        <th>Attribute (<span style="color: red">*</span> is required)</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>platform</td>
+                        <td>Platform on which the application will run</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>The bundle id or package name of the application</td>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                        <td>API key of the application</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/applications</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    [
+        {
+            "platform" : "android",
+            "name" : "com.myapp.one",
+            "id" : "9CB94702B43111E295888476C475FD93"
+        },
+        {
+            "platform" : "ios",
+            "name" : "com.myapp.two",
+            "id" : "9CB94702B43111E295888476C475FD55"
+        }
+    ]
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Push Limit Attributes-->
+<div id="push_limit_attributes" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h1>Push Limit Attributes</h1>
+
+        <table class='table table-striped table-bordered table-condensed'>
+            <thead>
+            <tr>
+                <th>Attribute (<span style="color: red">*</span> is required)</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span style="color: red">*</span>limit</td>
+                <td>The frequency control for the maximum number of push notifications an end user can receive in 24
+                    hours.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+    </div>
+
+
+</div>
+
+
+<!-- Push Limit Get -->
+<div id="push_limit_get" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get Push Limit</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve the push limit for a specified application. In this example,
+                    "9CB94702B43111E295888476C475FD93" is the ID of the application for which we are getting the daily
+                    push limit.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/applications/9CB94702B43111E295888476C475FD93/daily_push_limit</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "limit" : 55
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Push Limit Create -->
+<div id="push_limit_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create a Push Limit</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to create a push limit for a given application. In this example,
+                    "9CB94702B43111E295888476C475FD93" is the ID of the application for which we are creating the daily
+                    push limit.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/applications/9CB94702B43111E295888476C475FD93/daily_push_limit</code>
+
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "limit" : 55
+    }
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "limit" : 55
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Push Limit Delete -->
+<div id="push_limit_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete a Push Limit</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete a push limit for a given application. In this example,
+                    "9CB94702B43111E295888476C475FD93" is the ID of the application for which we are deleting the daily
+                    push limit.</p>
+
+                <h3>HTTP Method</h3>
+                <code>DELETE</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/applications/9CB94702B43111E295888476C475FD93/daily_push_limit</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Geofence Attributes -->
+<div id="geofences_attributes" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Geofence Attributes</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description</h2>
+
+                <p>The following is the list of attributes supported by the Geofences API calls. The placeAttributes
+                    field is a metadata field of key value pairs. An unlimited number of these key value pairs is
+                    permitted. These key value pairs can contain whatever information is desired about a geofence. Ex:
+                    [k,v] = ["place_type", "mall"]</p>
+
+
+                <table class='table table-striped table-bordered table-condensed'>
+                    <tbody>
+                    <tr>
+                        <td><span style="color: red">*</span>name</td>
+                        <td>The name for the geofence.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>addressLineOne</td>
+                        <td>The standard street address.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>placeAttributes</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><span style="color: red">*</span>key</td>
+                        <td>Value for the key value pair.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>...</td>
+                        <td>Unlimited amount of key value pairing</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p>and either</p>
+
+                <table class='table table-striped table-bordered table-condensed'>
+                    <tbody>
+                    <tr>
+                        <td><span style="color: red">*</span><b>geoFenceCircle</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><span style="color: red">*</span>radius</td>
+                        <td>The radius of the circle in meters.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><span style="color: red">*</span>location</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><span style="color: red">*</span>latitude</td>
+                        <td>The latitude of the center point.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><span style="color: red">*</span>longitude</td>
+                        <td>The longitude of the center point.</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p>or</p>
+
+                <table class='table table-striped table-bordered table-condensed'>
+                    <tbody>
+                    <tr>
+                        <td><span style="color: red">*</span><b>geoFencePolygon</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><span style="color: red">*</span>locations</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><span style="color: red">*</span>latitude</td>
+                        <td>The latitude of the first point in the polygon.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><span style="color: red">*</span>longitude</td>
+                        <td>The longitude of the first point in the polygon.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><span style="color: red">*</span>latitude</td>
+                        <td>The latitude of the second point in the polygon.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><span style="color: red">*</span>longitude</td>
+                        <td>The longitude of the second point in the polygon.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><span style="color: red">*</span>latitude</td>
+                        <td>The latitude of the nth point in the polygon.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><span style="color: red">*</span>longitude</td>
+                        <td>The longitude of the nth point in the polygon.</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p>(<span style="color: red">*</span>) denotes the the field is required.</p>
+
+                <p>A Geofence represents a virtual boundary around a physical location. It may be either Radial or
+                    Polygonal. A radial geofence is simply a circle around a specific point on the globe, where the
+                    center is a latitude/longitude pair, and the size is determined by a radius in meters. A polygonal
+                    geofence is a shape drawn around a location, utilizing a set of points which are latitude/longitude
+                    pairs.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Geofences Get All -->
+<div id="geofences_get_all" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get All Geofences</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description</h2>
+
+                <p>This call allows you to retrieve all the Geofences your organization has defined in the
+                    Gimbal Manager.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/geofences</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    [{
+        "id": 1
+        "name": "Gimbal HQ",
+        "addressLineOne": "5775 Morehouse Drive, San Diego CA 92121",
+        "geoFenceCircle": {
+            "radius": 100,
+            "visibility": "ORGANIZATION",
+            "location": {
+                "latitude": 32.89494374592149,
+                "longitude": -117.19603832579497
+            }
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    },
+    {
+        "id": 3291
+        "name": "Gimbal R&D",
+        "addressLineOne": "5665 Morehouse Drive, San Diego CA 92121",
+        "geoFencePolygon": {
+            "visibility": "ORGANIZATION",
+            "locations": [
+                {
+                    "latitude": 32.8953153522896,
+                    "longitude": -117.19559844351653
+                },
+                {
+                    "latitude": 32.8954009341414,
+                    "longitude": -117.19516929007415
+                },
+                {
+                    "latitude": 32.89564867061472,
+                    "longitude": -117.1949815354431
+                },
+                {
+                    "latitude": 32.89545949009762,
+                    "longitude": -117.19463284827117
+                },
+                {
+                    "latitude": 32.894986537037255,
+                    "longitude": -117.19496544218902
+                },
+                {
+                    "latitude": 32.894864920127866,
+                    "longitude": -117.19554479933623
+                }
+            ]
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    }]
+                </pre>
+
+            </div>
+        </div>
+         <p><span class="label label-info">Note</span>
+            In case of imported PUBLIC geofences, this API will not return the location details for the geofence. A sample json 
+            response for imported PUBLIC geofences is shown below.
+        </p>
+         <pre class="prettyprint lang-js">
+
+    [{
+        "id": 1,
+        "name": "Gimbal HQ",
+        "geoFenceCircle": {
+            "radius": 100,
+            "visibility": "PUBLIC"
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    },
+    {
+        "id": 3291,
+        "name": "Gimbal R&D",
+        "geoFencePolygon": {
+           "visibility": "PUBLIC" 
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    }]
+    </pre>
+    </div>
+</div>
+
+<!-- Geofences Get -->
+<div id="geofences_get" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get a Geofence</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve a single Geofence based on the identifier.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/geofences/1</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "id": 1
+        "name": "Gimbal HQ",
+        "addressLineOne": "5775 Morehouse Drive, San Diego CA 92121",
+        "geoFenceCircle": {
+            "radius": 100,
+            "visibility": "ORGANIZATION",
+            "location": {
+                "latitude": 32.89494374592149,
+                "longitude": -117.19603832579497
+            }
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    }
+                </pre>
+
+            </div>
+        </div>
+    <p><span class="label label-info">Note</span>
+            In case of imported PUBLIC geofences, this API will not return the location details for the geofence. A sample json 
+            response for imported PUBLIC geofence is shown below.
+        </p>
+         <pre class="prettyprint lang-js">
+
+    {
+        "id": 1,
+        "name": "Gimbal HQ Public Fence",
+        "geoFenceCircle": {
+            "radius": 100,
+            "visibility": "PUBLIC"
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    }
+    </pre>      
+    </div>
+</div>
+
+
+<!-- Geofences Create -->
+<div id="geofences_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create a Geofence</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description</h2>
+
+                <p>This call allows you to create a new Geofence for your organization.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/geofences</code>
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "name": "Gimbal HQ",
+        "addressLineOne": "5775 Morehouse Drive, San Diego CA 92121",
+        "geoFenceCircle": {
+            "radius": 100,
+            "location": {
+                "latitude": 32.89494374592149,
+                "longitude": -117.19603832579497
+            }
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    }
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "id": 1
+        "name": "Gimbal HQ",
+        "addressLineOne": "5775 Morehouse Drive, San Diego CA 92121",
+        "geoFenceCircle": {
+            "radius": 100,
+            "location": {
+                "latitude": 32.89494374592149,
+                "longitude": -117.19603832579497
+            }
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    }
+                </pre>
+
+                <h3>Sample Error Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "error": {
+            "type": "Unprocessable",
+            "message": "Name is required."
+        }
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Geofences Update -->
+<div id="geofences_update" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Update a Geofence</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description</h2>
+
+                <p>This call allows you to update a Geofence for your organization.</p>
+
+                <h3>HTTP Method</h3>
+                <code>PUT</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/geofences/1</code>
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "name": "Gimbal Headquarters",
+        "placeAttributes": {
+            "key3": "value3"
+        }
+    }
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "id": 1
+        "name": "Gimbal Headquarters",
+        "addressLineOne": "5775 Morehouse Drive, San Diego CA 92121",
+        "geoFenceCircle": {
+            "radius": 100,
+            "location": {
+                "latitude": 32.89494374592149,
+                "longitude": -117.19603832579497
+            }
+        },
+        "placeAttributes": {
+            "key3": "value3"
+        }
+    }
+                </pre>
+
+                <h3>Sample Error Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "error": {
+            "type": "Unprocessable",
+            "message": "Name is required."
+        }
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Geofences Delete -->
+<div id="geofences_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete a Geofence</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete a single Geofence based on the identifier.</p>
+
+                <h3>HTTP Method</h3>
+                <code>DELETE</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/geofences/1</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "id": 1
+        "name": "Gimbal Headquarters",
+        "addressLineOne": "5775 Morehouse Drive, San Diego CA 92121",
+        "geoFenceCircle": {
+            "radius": 100,
+            "location": {
+                "latitude": 32.89494374592149,
+                "longitude": -117.19603832579497
+            }
+        },
+        "placeAttributes": {
+            "key3": "value3"
+        }
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="bulk_geofences_attributes" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h1>Bulk Geofences Attributes</h1>
+
+        <table class='table table-striped table-bordered table-condensed'>
+            <tbody>
+            <tr>
+                <td><span style="color: red">*</span>name</td>
+                <td>The name for the geofence.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>addressLineOne</td>
+                <td>The standard street address.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>placeAttributes</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span style="color: red">*</span>key</td>
+                <td>Value for the key value pair.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>...</td>
+                <td>Unlimited amount of key value pairing</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>and either</p>
+
+        <table class='table table-striped table-bordered table-condensed'>
+            <tbody>
+            <tr>
+                <td><span style="color: red">*</span><b>geoFenceCircle</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span style="color: red">*</span>radius</td>
+                <td>The radius of the circle in meters.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span style="color: red">*</span>location</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><span style="color: red">*</span>latitude</td>
+                <td>The latitude of the center point.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><span style="color: red">*</span>longitude</td>
+                <td>The longitude of the center point.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>or</p>
+
+        <table class='table table-striped table-bordered table-condensed'>
+            <tbody>
+            <tr>
+                <td><span style="color: red">*</span><b>geoFencePolygon</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span style="color: red">*</span>locations</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><span style="color: red">*</span>latitude</td>
+                <td>The latitude of the first point in the polygon.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><span style="color: red">*</span>longitude</td>
+                <td>The longitude of the first point in the polygon.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><span style="color: red">*</span>latitude</td>
+                <td>The latitude of the second point in the polygon.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><span style="color: red">*</span>longitude</td>
+                <td>The longitude of the second point in the polygon.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><span style="color: red">*</span>latitude</td>
+                <td>The latitude of the nth point in the polygon.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><span style="color: red">*</span>longitude</td>
+                <td>The longitude of the nth point in the polygon.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>(<span style="color: red">*</span>) denotes the the field is required.</p>
+    </div>
+
+</div>
+
+<!-- Bulk Geofences Create -->
+<div id="bulk_geofences_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Bulk Geofences</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to create multiple geofences.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/bulk_geofences</code>
+
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    [{
+        "name": "Gimbal HQ",
+        "addressLineOne": "5775 Morehouse Drive, San Diego CA 92121",
+        "geoFenceCircle": {
+            "radius": 100,
+            "location": {
+                "latitude": 32.89494374592149,
+                "longitude": -117.19603832579497
+            }
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    },
+    {
+        "name": "Gimbal R&D",
+        "addressLineOne": "5665 Morehouse Drive, San Diego CA 92121",
+        "geoFencePolygon": {
+            "locations": [
+                {
+                    "latitude": 32.8953153522896,
+                    "longitude": -117.19559844351653
+                },
+                {
+                    "latitude": 32.8954009341414,
+                    "longitude": -117.19516929007415
+                },
+                {
+                    "latitude": 32.89564867061472,
+                    "longitude": -117.1949815354431
+                },
+                {
+                    "latitude": 32.89545949009762,
+                    "longitude": -117.19463284827117
+                },
+                {
+                    "latitude": 32.894986537037255,
+                    "longitude": -117.19496544218902
+                },
+                {
+                    "latitude": 32.894864920127866,
+                    "longitude": -117.19554479933623
+                }
+            ]
+        }
+    }]
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    [{
+        "id": 1
+        "name": "Gimbal HQ",
+        "addressLineOne": "5775 Morehouse Drive, San Diego CA 92121",
+        "geoFenceCircle": {
+            "radius": 100,
+            "location": {
+                "latitude": 32.89494374592149,
+                "longitude": -117.19603832579497
+            }
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    },
+    {
+        "id": 2
+        "name": "Gimbal R&D",
+        "addressLineOne": "5665 Morehouse Drive, San Diego CA 92121",
+        "geoFencePolygon": {
+            "locations": [
+                {
+                    "latitude": 32.8953153522896,
+                    "longitude": -117.19559844351653
+                },
+                {
+                    "latitude": 32.8954009341414,
+                    "longitude": -117.19516929007415
+                },
+                {
+                    "latitude": 32.89564867061472,
+                    "longitude": -117.1949815354431
+                },
+                {
+                    "latitude": 32.89545949009762,
+                    "longitude": -117.19463284827117
+                },
+                {
+                    "latitude": 32.894986537037255,
+                    "longitude": -117.19496544218902
+                },
+                {
+                    "latitude": 32.894864920127866,
+                    "longitude": -117.19554479933623
+                }
+            ]
+        }
+    }]
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bulk Geofences Update -->
+<div id="bulk_geofences_update" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Update Bulk Geofences</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to update multiple geofences.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/bulk_geofences/update</code>
+
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    [{
+        "id": 1,
+        "name": "Gimbal Headquarters"
+    }]
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    [{
+        "id": 1
+        "name": "Gimbal Headquarters",
+        "addressLineOne": "5775 Morehouse Drive, San Diego CA 92121",
+        "geoFenceCircle": {
+            "radius": 100,
+            "location": {
+                "latitude": 32.89494374592149,
+                "longitude": -117.19603832579497
+            }
+        },
+        "placeAttributes": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    }]
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bulk Geofences Delete -->
+<div id="bulk_geofences_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete Bulk Geofences</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete multiple geofences.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/bulk_geofences/destroy</code>
+
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "geofence_ids":
+            [1, 2]
+    }
+                </pre>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="sightings_callback" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Sightings Callback</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description</h2>
+
+                <p>As an application developer you can create rules that trigger the Gimbal Proximity service to inform you of the
+                    occurrence of certain sightings.
+                    This information is delivered as an HTTP POST originating from the Gimbal Proximity service to the action URL
+                    provided in the rule.
+                    Below is a description of the attributes you will receive in the sightings callback.</p>
+
+                <p>On first sighting of a beacon and a receiver (MBR or PBR) that match your configured rule, we send an
+                    arrival and sighted event. When another sighting is received after the configured sighting interval
+                    (based on server arrival time of both events), we send out another sighted event. We continue to
+                    send sighted events until we do not see sightings for the exit interval duration. We then send a
+                    departed event.</p>
+
+                <p>Arrival and Sighted events contain sighting information from the first sighting in the sighting
+                    packet with the exception of RSSI, which is averaged across all sightings in the packet.</p>
+
+                <p>Departure events contain sighting information for the most recent sighting for the beacon and
+                    receiver pair.</p>
+
+                <p>Dwell time is calculated from the start of the visit until the current sighted event or departure
+                    event. It is based on server time when the visit is started and when the event is generated.</p>
+
+                <p><span class="label label-important">Important</span> For more information about &quot;Rules&quot;
+                    please sign into the <a href="https://manager.gimbal.com">Gimbal Manager</a>.</p>
+
+                <h4>HTTP Method</h4>
+                <pre class="prettyprint lang-html">POST</pre>
+
+                <h4>Sighting POST Attributes</h4>
+                <table class='table table-striped table-bordered table-condensed'>
+                    <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Receiver Identifier</td>
+                        <td>The unique identifier of the receiver of the sighting</td>
+                    </tr>
+                    <tr>
+                        <td>Receiver Name</td>
+                        <td>The name of the receiver of the sighting</td>
+                    </tr>
+                    <tr>
+                        <td>Receiver Owner Identifier</td>
+                        <td>The unique identifier of the owner of the receiver of the sighting</td>
+                    </tr>
+                    <tr>
+                        <td>Transmitter Identifier</td>
+                        <td>The unique identifier of the sighted transmitter</td>
+                    </tr>
+                    <tr>
+                        <td>Transmitter Name</td>
+                        <td>The name of the receiver of the sighted transmitter</td>
+                    </tr>
+                    <tr>
+                        <td>Transmitter Owner Identifier</td>
+                        <td>The unique identifier of the owner of the sighted transmitter</td>
+                    </tr>
+                    <tr>
+                        <td>Triggering Event</td>
+                        <td>The event triggered by the sighting (one of Arrived, Departed, Sighted)</td>
+                    </tr>
+                    <tr>
+                        <td>Dwell Time</td>
+                        <td>Time in seconds since the Arrived event</td>
+                    </tr>
+                    <tr>
+                        <td>Signal Strength</td>
+                        <td>The received signal strength indication</td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td>The date and time of the sighting</td>
+                    </tr>
+                    <tr>
+                        <td>Latitude</td>
+                        <td>The latitude of the receiver at the time of the sighting if known</td>
+                    </tr>
+                    <tr>
+                        <td>Longitude</td>
+                        <td>The longitude of the receiver at the time of the sighting if known</td>
+                    </tr>
+                    <tr>
+                        <td>Accuracy</td>
+                        <td>The accuracy of the receiver latitude/longitude at the time of the sighting if
+                            known
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Location Fix Time</td>
+                        <td>The date and time the receiver fixed its latitude/longitude if known</td>
+                    </tr>
+                    <tr>
+                        <td>Battery Level</td>
+                        <td>The battery level of the transmitter at the time of the sighting if known</td>
+                    </tr>
+                    <tr>
+                        <td>Temperature</td>
+                        <td>The temperature of the transmitter at the time of the sighting if known</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2>Sample JSON</h2>
+                        <pre class="prettyprint lang-js">
+
+        {
+        "receiver_identifier":"auuid",
+        "receiver_name":"Johns Receiver",
+        "receiver_owner_id":"auuid",
+        "transmitter_identifier":"auuid",
+        "transmitter_name":"Johns Transmitter",
+        "transmitter_owner_id":"auuid"
+        ...
+        }
+                        </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- OAuth -->
+<div id="oauth" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>OAuth</h1>
+        <hr/>
+
+        <div class="row-fluid" id="oauth_flow">
+            <div style="height: 40px;"></div>
+            <div class="span12">
+                <h2> OAuth Call Flow</h2>
+
+                <h3>Description</h3>
+
+                <p>Gimbal Proximity implements OAuth 2.0 for API authorization with third party applications. The
+                    following is an example of a fictitious web application leveraging OAuth to integrate
+                    with Gimbal Proximity. To create an actual application use the <a href="https://manager.gimbal.com">Gimbal Manager</a>.</p>
+
+                <p><i>For details about OAuth 2.0 please review the specification.</i></p>
+
+                <h4>Sample Application Properties</h4>
+
+                <table class='table table-striped table-bordered table-condensed'>
+                    <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Client ID</td>
+                        <td>my-client-id</td>
+                    </tr>
+                    <tr>
+                        <td>Client Secret</td>
+                        <td>my-client-secret</td>
+                    </tr>
+                    <tr>
+                        <td>Redirect URI</td>
+                        <td>http://www.myapp.com/callback</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2>Authorization Request</h2>
+
+                <p>The first step is to initiate an Authorization Request with Gimbal Proximity.</p>
+
+                <p><strong>GET</strong> <code>https://getfyx.com/oauth/authorize?response_type=code&client_id=my-client-id&redirect_uri=http://www.myapp.com/callback</code>
+                </p>
+
+                <p>If the user authorizes your application you will get a callback that looks like this.</p>
+
+                <p><code>http://www.myapp.com/callback?code=an-oauth-code</code></p>
+
+                <h2>Authorization Grant</h2>
+
+                <p>The next step is to request the token with the code you received.</p>
+
+                <p><strong>POST</strong> <code>https://getfyx.com/oauth/token</code></p>
+                            <pre class="prettyprint lang-js">
+
+        {
+            "code": "an-oauth-code",
+            "client_id": "my-client-id",
+            "grant_type": "authorization_code",
+            "client_secret": "my-client-secret",
+            "redirect_uri": "http://www.myapp.com/callback"
+        }
+                            </pre>
+
+                <p><strong>RESPONSE</strong></p>
+                            <pre class="prettyprint lang-js">
+
+        {
+            "token_type": "bearer",
+            "refresh_token": "my-refresh-token",
+            "access_token": "my-token",
+            "expires_in": null
+        }
+                            </pre>
+                <p>Given the authorization token, you can make calls to protected Gimbal Proximity APIs.</p>
+
+                <div id="token_info">
+                    <div style="height: 40px;"></div>
+                    <h2 id="token_info">Token Information</h2>
+
+                    <p> The authorization token is associated with an Gimbal Proximity user account. You can use the token to query
+                        for the authorized user's information.</p>
+
+                    <p>For example you can retrieve the User Identifier for a token.</p>
+
+                    <p><strong>GET</strong> <code>https://getfyx.com/oauth/token/info?access_token=my-token</code></p>
+
+                    <p><strong>RESPONSE</strong></p>
+                            <pre class="prettyprint lang-js">
+
+            {
+                "user_id": "a-user-id"
+            }
+                            </pre>
+                </div>
+                <div id="revoke_token">
+                    <div style="height: 40px;"></div>
+                    <h2 id="revoke_token">Revoke Token</h2>
+
+                    <p>You may also revoke a token which will de-authorize the application from the Gimbal Proximity service. Once
+                        the token is revoked the application will need to restart the OAuth flow to regain access to
+                        protected APIs.</p>
+
+                    <span class="label label-warning">Note</span> Revoking a token only de-authorizes an application and
+                    leaves the user logged-in to the Gimbal Proximity Service
+                    <p></p>
+
+                    <p>To revoke a token perform the following.</p>
+
+                    <p><strong>DELETE</strong> <code>https://getfyx.com/oauth/token?access_token=my-token</code></p>
+
+                    <p><strong>RESPONSE</strong> You will receive a 200 OK with an empty JSON response </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Transmitters -->
+<div id="transmitters" class="row-fluid api_row">
+<div style="height: 40px;"></div>
+<div class="span12">
+
+    <h1>Transmitters</h1>
+    <hr/>
+    <p> The transmitter rest APIs allow a developer to manage some of the transmitter information already in the
+        system. These APIs are protected with <a href="#oauth">OAuth</a> which means they all must have a user token
+        pass as a query parameter. APIs are restricted transmitters owned by the account associated with the OAuth
+        token.</p>
+    <span class="label label-warning">Note</span> Across all documentation and SDKs the terms 'Beacon' and 'Transmitter' are interchangeable
+    <div class="row-fluid" id="transmitters_activate">
+        <div class="span12">
+            <div style="height: 40px;"></div>
+            <h2> Activate Transmitter</h2>
+
+            <h3>Description</h3>
+
+            <p>This API allows a user to activate new transmitter for their Gimbal Proximity account. This transmitter must not
+                belong to any other account in the system.</p>
+
+            <h4>HTTP Method</h4>
+            <pre class="prettyprint lang-html">POST</pre>
+
+            <h4>Activate POST Attributes</h4>
+            <table class='table table-striped table-bordered table-condensed'>
+                <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Factory Identifier</td>
+                    <td>The unique identifier of the transmitter</td>
+                </tr>
+                <tr>
+                    <td>Display Name</td>
+                    <td>The user provided name for the transmitter</td>
+                </tr>
+
+                </tbody>
+            </table>
+            <p>Example: POST <code>https://api.getfyx.com/api/v1/transmitters?access_token={token}</code></p>
+            <h4>Sample JSON</h4>
+                        <pre class="prettyprint lang-js">
+
+    {
+    "factory_id":"XXXX-YYYY",
+    "display_name":"Johns Transmitter"
+    }
+                        </pre>
+            <p><strong>RESPONSE</strong> You will receive a 200 OK with an empty JSON response </p>
+        </div>
+    </div>
+
+    <div class="row-fluid" id="transmitters_deactivate">
+        <div class="span12">
+            <div style="height: 40px;"></div>
+            <h2> Deactivate Transmitter</h2>
+
+            <h3>Description</h3>
+
+            <p>This API allows a user to deactivate a transmitter they have previously associated to their Gimbal Proximity
+                account. After deactivating the transmitter can be activated by another user or re-activated by the
+                same user.</p>
+
+            <h4>HTTP Method</h4>
+            <pre class="prettyprint lang-html">DELETE</pre>
+
+            <p>Example: DELETE
+                <code>https://api.getfyx.com/api/v1/transmitters/{factory_id}?access_token={token}</code></p>
+
+            <p><strong>RESPONSE</strong> You will receive a 200 OK with an empty JSON response </p>
+
+        </div>
+    </div>
+
+    <div class="row-fluid" id="transmitters_get">
+        <div class="span12">
+            <div style="height: 40px;"></div>
+            <h2> Get Transmitter By Factory Id</h2>
+
+            <h3>Description</h3>
+
+            <p>Call this API to retrieve the display_name of a transmitter by the given factory_id. </p>
+
+            <h4>HTTP Method</h4>
+            <pre class="prettyprint lang-html">GET</pre>
+
+
+            <p>Example: GET
+                <code>https://api.getfyx.com/api/v1/transmitters/{factory_id}?access_token={token}</code></p>
+            <h4>Sample JSON Response</h4>
+                        <pre class="prettyprint lang-js">
+
+    {
+    "factory_id" : "XXXX-YYYY",
+    "icon_url" : "http://localhost/assets/fallback/default_icon.png",
+    "display_name" : "John's Transmitter"
+    }
+                        </pre>
+        </div>
+    </div>
+
+    <div class="row-fluid" id="transmitters_get_all">
+        <div class="span12">
+            <div style="height: 40px;"></div>
+            <h2> Get All Transmitters</h2>
+
+            <h3>Description</h3>
+
+            <p>Call this API to retrieve all transmitters associated to a specific user. The user is the owner of
+                the OAuth token.</p>
+
+            <h4>HTTP Method</h4>
+            <pre class="prettyprint lang-html">GET</pre>
+
+            <p>Example: GET <code>https://api.getfyx.com/api/v1/transmitters?access_token={token}</code></p>
+            <h4>Sample JSON Response</h4>
+                        <pre class="prettyprint lang-js">
+
+    {
+     "transmitters" : [
+       {
+         "factory_id" : "XXXX-YYY1",
+         "icon_url" : "http://localhost/assets/fallback/default_icon.png",
+         "display_name" : "north.p"
+       },
+       {
+         "factory_id" : "XXXX-YYY2",
+         "icon_url" : "http://localhost/assets/fallback/default_icon.png",
+         "display_name" : "Tx"
+       },
+       {
+         "factory_id" : "XXXX-YYY3",
+         "icon_url" : "http://localhost/assets/fallback/default_icon.png",
+         "display_name" : "2602 south for John"
+       },
+       {
+         "factory_id" : "XXXX-YYY4",
+         "icon_url" : "http://localhost/assets/fallback/default_icon.png",
+         "display_name" : "2606 mist 640ms"
+       },
+       {
+         "factory_id" : "XXXX-YYY5",
+         "icon_url" : "http://localhost/assets/fallback/default_icon.png",
+         "display_name" : "John3"
+       }
+     ]
+   }
+                        </pre>
+        </div>
+    </div>
+
+    <div class="row-fluid" id="transmitters_update_name">
+        <div class="span12">
+            <div style="height: 40px;"></div>
+            <h2> Update Transmitter Display Name</h2>
+
+            <h3>Description</h3>
+
+            <p>This API allows a user to updated the display name of a transmitter.</p>
+
+            <h4>HTTP Method</h4>
+            <pre class="prettyprint lang-html">PUT</pre>
+
+            <h4>Update PUT Attributes</h4>
+            <table class='table table-striped table-bordered table-condensed'>
+                <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Factory Identifier</td>
+                    <td>The unique identifier of the receiver of the sighting</td>
+                </tr>
+                <tr>
+                    <td>Display Name</td>
+                    <td>The unique identifier of the owner of the receiver of the sighting</td>
+                </tr>
+
+                </tbody>
+            </table>
+            <p>Example: PUT
+                <code>https://api.getfyx.com/api/v1/transmitters/{factory_id}?access_token={token}</code></p>
+
+            <h3>Sample JSON</h3>
+                        <pre class="prettyprint lang-js">
+
+    {
+      "display_name":"Johns Transmitter"
+    }
+                        </pre>
+            <p><strong>RESPONSE</strong> You will receive a 200 OK with an empty JSON response </p>
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+<div id="communication_attributes" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h1>Communication Attributes</h1>
+
+        <table class='table table-striped table-bordered table-condensed'>
+            <thead>
+            <tr>
+                <th>Attribute (<span style="color: red">*</span> is required)</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span style="color: red">*</span>name</td>
+                <td>A Communicate Name</td>
+            </tr>
+            <tr>
+                <td><span style="color: red">*</span>start_date</td>
+                <td>Date a communication starts</td>
+            </tr>
+            <tr>
+                <td><span style="color: red">*</span>end_date</td>
+                <td>Date a communication ends</td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>The id of the communication</td>
+            </tr>
+            <tr>
+                <td>published</td>
+                <td>A boolean value indicating if the communication has been published</td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+    </div>
+</div>
+
+<!-- Communications Get All -->
+<div id="communications_get_all" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+
+        <h1>Get All Communications</h1>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description</h2>
+
+                <p>This call allows you to retrieve all the Communications your organization has defined in the
+                    Gimbal Manager.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications</code>
+
+                <h3>Sample Response JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    [
+      {
+        "published" : false,
+        "id" : 1,
+        "start_date" : "2013-04-10",
+        "end_date" : "2013-04-17",
+        "name" : "My First Communication"
+      },
+      {
+        "published" : true,
+        "id" : 2,
+        "start_date" : "2013-04-10",
+        "end_date" : "2013-04-17",
+        "name" : "My Second Communication"
+      }
+    ]
+                                    </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Communications Get -->
+<div id="communications_get" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get a Communication</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve a single Communication based on the identifier.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1</code>
+
+                <h3>Sample Response JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+        "published" : false,
+        "id" : 1,
+        "start_date" : "2013-04-10",
+        "end_date" : "2013-04-17",
+        "name" : "My First Communication"
+    }
+                                    </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Communications Update -->
+<div id="communications_update" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Update a Communication</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+
+                <h2>Description</h2>
+
+                <p>This call allows you to update a Communication based on id.</p>
+
+                <h3>HTTP Method</h3>
+                <code>PUT</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1</code>
+
+
+                <h3>Sample Request JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+      "start_date" : "2013-04-18",
+      "end_date" : "2013-04-19",
+      "name" : "My New Communicate"
+    }
+                                    </pre>
+
+                <h3>Sample Response JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+      "published" : false,
+      "id" : 9,
+      "start_date" : "2013-04-18",
+      "end_date" : "2013-04-19",
+      "name" : "My New Communicate"
+    }
+                                    </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Communications Create -->
+<div id="communications_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create a Communication</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+
+                <h2>Description</h2>
+
+                <p>This call allows you to create a new Communication for your organization.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications</code>
+
+
+                <h3>Sample Request JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+      "start_date" : "2013-04-18",
+      "end_date" : "2013-04-19",
+      "name" : "My New Communicate"
+    }
+                                    </pre>
+
+                <h3>Sample Response JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+      "published" : false,
+      "id" : 9,
+      "start_date" : "2013-04-18",
+      "end_date" : "2013-04-19",
+      "name" : "My New Communicate"
+    }
+                                    </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Communications Delete -->
+<div id="communications_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete a Communication</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete a single Communication based on the identifier.</p>
+
+                <h3>HTTP Method</h3>
+                <code>DELETE</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Communications Publish -->
+<div id="communications_publish" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Publish a Communication</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to publish a single Communication based on the identifier. The communication
+                    becomes active once published.
+                    A communication can be stopped at anytime by calling the stop method.</p>
+                <i><span style="color: red">*</span> Important: To publish a Communication, a Trigger (<a
+                        href="#time_trigger_attributes">Time</a> or <a href="#geofence_trigger_attributes">Geofence</a>)
+                    or an attribute is required. A <a href="#notification_attributes">Notification</a> is also required.</i>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/publish</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Communications Stop -->
+<div id="communications_stop" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Stop a Communication</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to stop a single Communication based on the identifier.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/stop</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Notification Attributes -->
+<div id=notification_attributes class="row-fluid api_row">
+<div style="height: 40px;"></div>
+<div class="span12">
+    <h1>Notification Attributes</h1>
+    <table class='table table-striped table-bordered table-condensed'>
+        <thead>
+        <tr>
+            <th>Attribute (<span style="color: red">*</span> is required)</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span style="color: red">*</span>title</td>
+            <td>The title of the notification.</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span style="color: red">*</span>description</td>
+            <td>The description of the notification.</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span style="color: red">*</span>combine_title_description</td>
+            <td>If set to true, title and description will be concatenated with ":" for time triggered iOS Push Notification.<br /> Otherwise, only description will be used for time triggered iOS Push Notification.</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>url</td>
+            <td>The url of the content.</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Notification Get -->
+<div id="notification_get" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get the Notification </h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve the notification for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/notification</code>
+
+                <h3>Sample Response JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+      "title" : "myTitle",
+      "description" : "myDescription",
+      "url" : "protocol://exampleurl",
+      "combine_title_description" : true
+    }
+                                    </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Notification Create -->
+<div id="notification_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create a Notification </h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to create a notification for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/notification</code>
+
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "title" : "myTitle",
+      "description" : "myDescription",
+      "url" : "protocol://exampleurl",
+      "combine_title_description" : true
+    }
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "title" : "myTitle",
+      "description" : "myDescription",
+      "url" : "protocol://exampleurl",
+      "combine_title_description" : true
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Notification Delete -->
+<div id="notification_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete the Notification </h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete the notification for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>DELETE</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/notification</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="geofence_target_fields" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h1>Geofence Target Attributes</h1>
+        <table class='table table-striped table-bordered table-condensed'>
+            <thead>
+            <tr>
+                <th>Attribute (<span style="color: red">*</span> is required)</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span style="color: red">*</span>target_ids</td>
+                <td>An array of valid geofence ids. Only numeric values are permitted. Strings such as "All" are not permitted.</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <p>For example: you can have a geofence around a shopping mall to trigger a Communicate that tells the end-user to visit a few stores and then get analytics that end-users breached geofences around any of those stores.</p>
+    </div>
+
+</div>
+
+
+<!-- Geofence Targets Get All-->
+<div id="geofence_target_get_all" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get All Geofence Targets</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve all the geofence targets for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/geofence_targets</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {"target_ids": [33333333333667]}
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Geofence Target Create -->
+<div id="geofence_target_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Geofence Targets</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to create one or more geofence targets for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/geofence_targets</code>
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {"target_ids": [33333333333667]}
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {"target_ids": [33333333333667]}
+
+                </pre>
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Geofence Target Delete -->
+<div id="geofence_target_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete All Geofence Targets</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete all geofence targets for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>DELETE</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/geofence_targets</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="time_trigger_attributes" class="row-fluid api_row">
+<div style="height: 40px;"></div>
+<div class="span12">
+
+    <h1>Time Trigger Attributes</h1>
+    <table class='table table-striped table-bordered table-condensed'>
+        <thead>
+        <tr>
+            <th>Attribute (<span style="color: red">*</span> is required)</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span style="color: red">*</span>day of week</td>
+            <td>One of <code>monday</code> <code>tuesday</code> <code>wednesday</code> <code>thursday</code>
+                <code>friday</code> <code>saturday</code> <code>sunday</code></td>
+        </tr>
+        <tr>
+            <td><span style="color: red">*</span>time</td>
+            <td>Hour and minute of day in 24 hour format ie <code>13:00</code></td>
+        </tr>
+        </tbody>
+    </table>
+    <i>Note: In order to create a time trigger, any previous geofence trigger must be removed first.</i>
+
+
+</div>
+
+<!-- TimeTrigger Get -->
+<div id="time_trigger_get" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get the Time Trigger</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve the time trigger for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/time_trigger</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+        "monday": "08:00",
+        "tuesday": "13:00"
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TimeTrigger Create -->
+<div id="time_trigger_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create a Time Trigger</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to create a time trigger for a given communication.</p>
+                <i>Note: In order to create a time trigger, any previous geofence trigger must be removed first.</i>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/time_trigger</code>
+
+                <h3>Sample Request JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+        "monday": "08:00",
+        "tuesday": "13:00"
+    }
+                                    </pre>
+
+                <h3>Sample Response JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+        "monday": "08:00",
+        "tuesday": "13:00"
+    }
+                                    </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- TimeTrigger Delete -->
+<div id="time_trigger_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete the Time Trigger</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete the time trigger for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>DELETE</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/time_trigger</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="geofence_trigger_attributes" class="row-fluid api_row">
+<div style="height: 40px;"></div>
+<div class="span12">
+
+    <h1>Geofence Trigger Attributes</h1>
+    <table class='table table-striped table-bordered table-condensed'>
+        <thead>
+        <tr>
+            <th>Attribute (<span style="color: red">*</span> is required)</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span style="color: red">*</span>event_type</td>
+            <td>An Event Type. One of <code>at</code> or <code>left</code>
+            </td>
+        </tr>
+        <tr>
+            <td><span style="color: red">*</span>locations</td>
+            <td>One or <code>all</code> or an array of valid geofence IDs</td>
+        </tr>
+        </tbody>
+    </table>
+    <i>Note: In order to create a geofence trigger, any previous time trigger must be removed first.</i>
+
+</div>
+
+<!-- GeofenceTrigger Get -->
+<div id="geofence_trigger_get" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get the Geofence Trigger</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve the geofence trigger for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/geofence_trigger</code>
+
+                <h3>Sample Response JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+        "event_type": "at",
+        "locations": "all"
+    }
+                                    </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- GeofenceTrigger Create -->
+<div id="geofence_trigger_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create a Geofence Trigger</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to create a geofence trigger for a given communication. To create a geofence
+                    trigger for a specific location(s), pass the locations as an array of geofence id's.</p>
+                <span style="color: red">*</span><i>Note: To set the trigger for all of your geofences, use the "all"
+                option for locations</i>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/geofence_trigger</code>
+
+                <h3>Sample Request JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+        "event_type": "at",
+        "locations": [16144]
+    }
+                                    </pre>
+
+                <h3>Sample Response JSON</h3>
+                                    <pre class="prettyprint lang-js">
+
+    {
+        "event_type": "at",
+        "locations": [16144]
+    }
+                                    </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- GeofenceTrigger Delete -->
+<div id="geofence_trigger_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete the Geofence Trigger</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete the geofence trigger for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>DELETE</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/geofence_trigger</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TimeFilter Attributes -->
+<div id="time_filter_attributes" class = "row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+    <h1>Time Filter </h3>
+    <h3>Time Filter  Attributes</h3>
+    <table class='table table-striped table-bordered table-condensed'>
+        <thead>
+            <tr>
+                <th>Attribute (<span style="color: red">*</span> is required)</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span style="color: red">*</span>day of week</td>
+                <td>One of <code>monday</code> <code>tuesday</code> <code>wednesday</code> <code>thursday</code>
+                    <code>friday</code> <code>saturday</code> <code>sunday</code></code>
+                </td>
+            </tr>
+            <tr>
+                <td><span style="color: red">*</span>start time</td>
+                <td>Hour and minute of day in 24 hour format ie <code>01:00</code></td>
+            </tr>
+            <tr>
+                <td><span style="color: red">*</span>end time</td>
+                <td>Hour and minute of day in 24 hour format ie <code>13:00</code></td>
+            </tr>
+            </tbody>
+        </table>
+        <i>Note: In order to create a time filter, a geofence trigger must be present.</i>
+
+</div>
+
+<!-- TimeFilter Get -->
+<div id="time_filter_get" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h3>Get the Time Filter</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h4>Description.</h4>
+
+                <p>This call allows you to retrieve the time filter for a given communication.</p>
+
+                <h4>HTTP Method</h4>
+                <code>GET</code>
+
+                <h4>URL</h4>
+                <code>https://manager.gimbal.com/api/communications/1/geofence_trigger/time_filter</code>
+
+                <h4>Sample Response JSON</h4>
+                <pre class="prettyprint lang-js">
+
+    {
+        "monday": {
+            "start": "08:00",
+            "end": "13:00"
+        },
+        "tuesday": {
+            "start": "08:00",
+            "end": "22:00"
+        }
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TimeFilter Create -->
+<div id="time_filter_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h3>Create a Time Filter</h3>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h4>Description.</h4>
+
+                <p>This call allows you to create a time trigger for a given communication.</p>
+                <i>Note: In order to create a time trigger, any previous geofence trigger must be removed first.</i>
+
+                <h4>HTTP Method</h4>
+                <code>POST</code>
+
+                <h4>URL</h4>
+                <code>https://manager.gimbal.com/api/communications/1/geofence_trigger/time_filter</code>
+
+                <h4>Sample Request JSON</h4>
+                                    <pre class="prettyprint lang-js">
+
+      {
+          "monday": {
+              "start": "08:00",
+              "end": "13:00"
+          },
+          "tuesday": {
+              "start": "08:00",
+              "end": "22:00"
+          }
+      }
+                                    </pre>
+
+                <h4>Sample Response JSON</h4>
+                                    <pre class="prettyprint lang-js">
+
+      {
+          "monday": {
+              "start": "08:00",
+              "end": "13:00"
+          },
+          "tuesday": {
+              "start": "08:00",
+              "end": "22:00"
+          }
+      }
+                                    </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TimeFilter Delete -->
+<div id="time_filter_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h3>Delete the Time Filter</h3>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h4>Description.</h4>
+
+                <p>This call allows you to delete the time filter for a given communication.</p>
+
+                <h4>HTTP Method</h4>
+                <code>DELETE</code>
+
+                <h4>URL</h4>
+                <code>https://manager.gimbal.com/api/communications/1/geofence_trigger/time_filter</code>
+
+                <h4>Response</h4>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--Neighborhoods attributes -->
+<div id="neighborhoods_attributes" class="row-fluid api_row">
+
+<div style="height: 40px;"></div>
+<div class="span12">
+
+    <h1>Neighborhood Attributes</h1>
+    <table class='table table-striped table-bordered table-condensed'>
+        <thead>
+        <tr>
+            <th>Attribute (<span style="color: red">*</span> is required)</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span style="color: red">*</span>kind</td>
+            <td>The type of neighborhood. Either home or work.</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><span style="color: red">*</span>source_id</td>
+            <td>This is the id of the neighborhood you wish to target. This id comes from the source of the neighborhood
+                database.
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td>The id of the neighborhood attribute.</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>communication id</td>
+            <td>The communication id for the neighborhood.</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Neighborhoods Get All -->
+<div id="neighborhoods_get_all" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get All Neighborhoods</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve the neighborhoods for a given communication.</p>
+
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/neighborhoods</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    [
+      {
+        "campaign_id" : 11,
+        "id" : 2,
+        "source_id" : null,
+        "kind" : "home"
+      },
+      {
+        "campaign_id" : 11,
+        "id" : 3,
+        "source_id" : null,
+        "kind" : "work"
+      }
+    ]
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Neighborhoods Get -->
+<div id="neighborhoods_get" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get a Neighborhood</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve a neighborhood for a given communication by the identifier.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/neighborhoods/1</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+      {
+        "campaign_id" : 1,
+        "id" : 1,
+        "source_id" : null,
+        "kind" : "home"
+      }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Neighborhoods Create -->
+<div id="neighborhoods_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create a Neighborhood</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to create a neighborhood for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/neighborhoods</code>
+
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "kind" : "work",
+      "source_id" : "1"
+    }
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "campaign_id" : 11,
+      "id" : 4,
+      "source_id" : 1,
+      "kind" : "work"
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Neighborhoods Delete -->
+<div id="neighborhoods_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete a Neighborhood</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete a neighborhood for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>DELETE</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/neighborhood/1</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="custom_profile_attributes" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h1>Custom Profile Attributes</h1>
+        <table class='table table-striped table-bordered table-condensed'>
+            <thead>
+            <tr>
+                <th>Attribute (<span style="color: red">*</span> is required)</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span style="color: red">*</span>value</td>
+                <td>Value of the key value pair. Limited to 255 characters.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color: red">*</span>key</td>
+                <td>Key of the key value pair. Limited to 255 characters.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span style="color: red">*</span>operator</td>
+                <td>The operator to compare the attributes. The valid operators are: ["NUM_GREATER_THAN",
+                    "NUM_GREATER_THAN_OR_EQUAL", "NUM_LESS_THAN", "NUM_LESS_THAN_OR_EQUAL", "NUM_EQUAL",
+                    "NUM_NOT_EQUAL", "STRING_EQUAL", "STRING_NOT_EQUAL"]
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Custom Profile Attributes Get All-->
+<div id="custom_attributes_get_all" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get All Custom Profile Attributes</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve all the Custom Profile Attributes for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/custom_attributes</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "custom_attributes": [
+       {
+         "value": "3",
+         "key": "number_of_visits",
+         "operator": "NUM_GREATER_THAN"
+       },
+       {
+         "value" : "mira_mesa",
+         "key" : "neighborhood",
+         "operator" : "STRING_EQUAL"
+       }
+      ]
+    }
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Profile Attributes Create -->
+<div id="custom_attributes_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Custom Profile Attributes</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to create one or more Custom Profile Attributes for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/custom_attributes</code>
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "custom_attributes": [
+       {
+         "value": "3",
+         "key": "number_of_visits",
+         "operator": "NUM_GREATER_THAN"
+       }
+      ]
+    }
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "custom_attributes": [
+       {
+         "value": "3",
+         "key": "number_of_visits",
+         "operator": "NUM_GREATER_THAN"
+       }
+      ]
+    }
+                </pre>
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Profile Attributes Delete -->
+<div id="custom_attributes_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+      <div class="span12">
+          <h1>Delete All Custom Profile Attributes</h1>
+          <hr/>
+          <div class="row-fluid">
+              <div class="span12">
+
+                  <h2>Description.</h2>
+
+                  <p>This call allows you to delete all Custom Profile Attributes for a given communication.</p>
+
+                  <h3>HTTP Method</h3>
+                  <code>DELETE</code>
+
+                  <h3>URL</h3>
+                  <code>https://manager.gimbal.com/api/communications/1/custom_attributes</code>
+
+                  <h3>Response</h3>
+
+                  <p>200 on success</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Communication Attributes Get All-->
+<div id="communication_attributes_get_all" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Get All Communication Attributes</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to retrieve all the communication attributes for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>GET</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/communication_attributes</code>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "communication_attributes":
+       {
+         "store_type" : "retail",
+         "product_type" : "clothing"
+       }
+    }
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Communication Attributes Create -->
+<div id="communication_attributes_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Communication Attributes</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to create one or more communication attributes for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>POST</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/communication_attributes</code>
+
+                <h3>Sample Request JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "communication_attributes":
+       {
+         "store_type" : "retail",
+         "product_type" : "clothing"
+       }
+    }
+                </pre>
+
+                <h3>Sample Response JSON</h3>
+                <pre class="prettyprint lang-js">
+
+    {
+      "communication_attributes":
+       {
+         "store_type" : "retail",
+         "product_type" : "clothing"
+       }
+    }
+                </pre>
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Communication Attributes Delete -->
+<div id="communication_attributes_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Delete All Communication Attributes</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h2>Description.</h2>
+
+                <p>This call allows you to delete all communication attributes for a given communication.</p>
+
+                <h3>HTTP Method</h3>
+                <code>DELETE</code>
+
+                <h3>URL</h3>
+                <code>https://manager.gimbal.com/api/communications/1/communication_attributes</code>
+
+                <h3>Response</h3>
+
+                <p>200 on success</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- AudienceFilter Attributes -->
+<div id="audience_filter_attributes" class = "row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+    <h1>Audience Filter </h3>
+    <i>Note: In order to create an audience filter, a communication id must be present.</i><br>
+    <i>You can call the following URL to get the list of all available profile attributes that you can create an audience filter against.</i>
+</div>
+
+<!-- AudienceFilter Get All Profile Attributes -->
+<div id="audience_filter_all_profile_attributes" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h3>Get all the profile attributes</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h4>Description.</h4>
+
+                <p>This call allows you to retrieve all the available profile attributes.</p>
+
+                <h4>HTTP Method</h4>
+                <code>GET</code>
+
+                <h4>URL</h4>
+                <code>https://manager.gimbal.com/api/profile_definitions</code>
+
+                <h4>Sample Response JSON</h4>
+                <pre class="prettyprint lang-js">
+    {
+        "profile_attributes": {
+            "Education": ["No College", "College", "Grad School"],
+            "Age": ["18 - 24", "25 - 34", "35 - 44", "45 - 55", "55+"],
+            "Ethnicity": ["Caucasian", "African American", "Asian", "Hispanic", "Other"],
+            "Kids": ["No Kids","Has Kids"],
+            "Gender": ["Male", "Female"],
+            "Interests": ["Getting from here to there", "Biking", "Automotive", "Automotive.Cars"],
+            "Income": ["$0 - 30k", "$30 - 60k", "$60 - 100k", "100k+"]
+        }
+    }
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AudienceFilter Get -->
+<div id="audience_filter_get_all" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h3>Get the Audience Filter</h1>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h4>Description.</h4>
+
+                <p>This call allows you to retrieve the audience filter for a given communication.</p>
+
+                <h4>HTTP Method</h4>
+                <code>GET</code>
+
+                <h4>URL</h4>
+                <code>https://manager.gimbal.com/api/communications/1/audience_filter</code>
+
+                <h4>Sample Response JSON</h4>
+                <pre class="prettyprint lang-js">
+    {   
+        "profile_attributes": {
+            "Gender": ["Female"],
+            "Kids": ["Has Kids"]
+        }
+    }
+                </pre>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AudienceFilter Create -->
+<div id="audience_filter_create" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h3>Create an Audience Filter</h3>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h4>Description.</h4>
+
+                <p>This call allows you to create an audience filter for a given communication.</p>
+                <i>Note: In order to create an audience filter, you need a valid communication and the available profile attributes.</i>
+
+                <h4>HTTP Method</h4>
+                <code>POST</code>
+
+                <h4>URL</h4>
+                <code>https://manager.gimbal.com/api/communications/1/audience_filter</code>
+
+                <h4>Sample Request JSON</h4>
+                                    <pre class="prettyprint lang-js">
+    {
+        "profile_attributes": {
+            "Gender": ["Female"],
+            "Kids": ["Has Kids"]
+        }
+    }                                    </pre>
+                <h4>Sample Response JSON</h4>
+                <pre class="prettyprint lang-js">
+    {
+        "profile_attributes": {
+            "Gender": ["Female"],
+            "Kids": ["Has Kids"]
+        }
+    }                                    </pre>
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AudienceFilter Delete -->
+<div id="audience_filter_delete" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h3>Delete the Audience Filter</h3>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h4>Description.</h4>
+
+                <p>This call allows you to delete the audience filter for a given communication.</p>
+
+                <h4>HTTP Method</h4>
+                <code>DELETE</code>
+
+                <h4>URL</h4>
+                <code>https://manager.gimbal.com/api/communications/1/audience_filter</code>
+
+                <h4>Response</h4>
+
+                <p>200 on success</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+    <footer class="row-fluid">
+
+         
+
+             <div id="footer" class="span12">
+
+        <p>&copy; 2013 Qualcomm Retail Solutions, Inc. All rights reserved. Gimbal is a trademark of Qualcomm Retail Solutions, Inc. QUALCOMM is a trademark of QUALCOMM Incorporated, registered in the United States and other countries.</p>
+
+            </div>
+         
+
+    </footer>
+
+ 
+
+                
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/nav-scrolling.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 40px;
+ 
+     
+  }
+
+p {font-size: 16px;}
+
+  .sidebar-nav {
+    padding: 9px 0;
+  }
+  .sidebar-nav-fixed {
+   position:fixed;
+   top:60px;
+   width:21.97%;
+ }
+
+ @media (max-width: 767px) {
+   .sidebar-nav-fixed {
+     width:auto;
+   }
+ }
+
+ @media (max-width: 979px) {
+   .sidebar-nav-fixed {
+     position:static;
+     width: auto;
+   }
+ }
+
+.numbering {
+    margin-right: 15px;
+    padding: 0;
+    list-style-type: none;
+    background: #FFA014;
+    color: #fff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    list-style-type: none;
+    font-size: 35px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+#configure_your_application_for_gimbal_sdk .prettyprint .nocode {
+  color: red;
+}
+
+#application_manifest_changes .prettyprint .nocode {
+  color: red;
+}
+
+#create_new_eclipse_project .stand_out_text {
+  color: red;
+}
+.navbar .nav {margin-top: 15px; height: 60px;}
+
+#overview  {background: #f2f2f2; border-bottom: 1px solid #ddd; margin-bottom: 20px; padding-bottom: 10px; padding-top: 20px;}
+
+.hero-unit {margin-bottom: 0; border-radius: 0; padding-left: 20px; height: 150px;}
+.hero-unit h1 {font-size: 55px;}
+
+#learn_more {margin-top: 25px; border-top: 1px solid #ddd;  padding-top: 10px; }
+
+footer {margin-top: 25px; border-top: 1px solid #ddd;  padding-top: 10px; }
+
+#footer {padding-left: 20px;}
+
+#rest-api {}
+
+.sidebar-nav-fixed {top: 80px;}
+ 
+
+
+/* Base class
+------------------------- */
+.jumbotron {
+  position: relative;
+  padding: 30px 20px 25px 20px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+  background: #020031; /* Old browsers */
+  background: -moz-linear-gradient(-15deg,  #020031 0%, #6d3353 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-15deg,  #020031 0%,#6d3353 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-15deg,  #020031 0%,#6d3353 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-15deg,  #020031 0%,#6d3353 100%); /* IE10+ */
+  background: linear-gradient(-15deg,  #020031 0%,#6d3353 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+     -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+          box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+}
+.jumbotron h1, .hero-unit h1 {
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.hero-unit h1 {font-size: 55px;}
+.jumbotron h2,  .hero-unit h2 {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 30px;
+}
+
+/* Pattern overlay
+------------------------- */
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
+}
+.jumbotron:after, .hero-unit:after {
+  content: '';
+  display: block;
+  position: absolute;
+  background: url(../images/bs-docs-masthead-pattern.png) repeat center center;
+  opacity: .4;
+}
+
+

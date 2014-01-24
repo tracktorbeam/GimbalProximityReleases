@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gimbal Proximity iOS Quickstart</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/overrides.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" onload="prettyPrint();">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="https://manager.gimbal.com"><img src="images/gimbal_logo.png"></a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                      
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Overview
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Overview</a></li>
+                            <li><a href="proximity_overview.html">Proximity Overview</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Context
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu">
+                            <a href="#">iOS</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="ios_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="ios_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="context/context_ios.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown-submenu">
+                            <a href="#">Android</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="android_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="android_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="android_push_quickstart.html">Push Quick Start</a></li> 
+                              <li><a href="context/context_android.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Proximity
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="ios_proximity_quickstart.html">Proximity Quick Start</a></li>
+                          <li><a href="proximity/ios.html">Proximity Developer Guide</a></li>
+                          <li><a href="ios/html/index.html">Proximity API</a></li>
+                          <li><a href="ios_proximity_based_communication_guide.html">Proximity Based Communicate Guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="rest.html">REST API</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+    <div class="row-fluid">
+
+    <div class="span3">
+        <div id="sidenav" class="well sidebar-nav sidebar-nav-fixed" style="overflow-y:auto;height:auto;">
+            <ul class="nav nav-list">
+                <li><a href="#create_your_developer_account">Create Your Developer Account</a></li>
+                <li><a href="#create_app">Create Your Application</a></li>
+                <li><a href="#add_proximity">Add Proximity</a></li>
+                <li><a href="#learn_more">Learn More</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="span9">
+
+        <div class="hero-unit">
+
+            <h1>Proximity iOS Quick Start</h1>
+
+            <p>Get Gimbal up and running in your iOS App.</p>
+            <p>If this is your first time working with the Proximity Framework visit the &nbsp;<a href="proximity_overview.html" class="btn btn-primary btn-small">Proximity Overview &raquo;</a> </p>
+        </div>
+
+      
+        <div id="create_your_developer_account" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Your Developer Account</h1>
+
+        <p>Go to the Gimbal Manager and create an account.</p>
+
+        <p><a href="https://manager.gimbal.com/login/users/sign_up" class="btn btn-primary btn-large"
+              target="_blank">Gimbal Manager &raquo;</a></p>
+    </div>
+
+</div>
+        <div id="create_app" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Create Your iOS Application</h1>
+
+        <p>The following steps will set up an application in Xcode ready for enabling Gimbal features.</p>
+
+    </div>
+</div>
+
+<div id="confirm_your_environment" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Confirm Your Environment</h2>
+
+        <p>Make sure you are:</p>
+
+        <div class="well">
+            <ul>
+                <li>Using Xcode 4.4 or higher</li>
+                <li>Targeting iOS 5.0 or higher</li>
+                <li>Using an iOS device with Bluetooth 4.0. Here is a list of the compatible devices:
+                    <ul>
+                        <li>iPhone 4S or newer</li>
+                        <li>iPad 3 or newer</li>
+                        <li>iPad mini</li>
+                        <li>iPod touch (5th Generation)</li>
+                    </ul>
+                </li>
+                <li>Have a valid <a href='https://developer.apple.com/programs/register/' target='_blank'>Apple
+                    Developer Account</a></li>
+                <li>Have a valid <a
+                        href='http://developer.apple.com/library/ios/#recipes/xcode_help-devices_organizer/articles/obtain_certificates_and_provisioning_profiles.html'
+                        target='_blank'> Apple Provisioning Profile</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="create_new_xcode_project" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Create a new Xcode project</h2>
+
+        <p>In Xcode choose <code>File > New > Project</code> and create a new Application</p>
+
+    </div>
+</div>
+
+<div id="add_ios_frameworks_and_libraries" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Add these iOS Frameworks and Libraries to your project</h2>
+
+        <div class="well">
+            <ul>
+                
+                <li>CoreBluetooth.framework</li>
+                <li>CoreLocation.framework</li>
+                <li>CoreData.framework</li>
+                <li>libz.dylib</li>
+                <li>MapKit.framework</li>   
+                <li>Security.framework</li>
+            </ul>
+        </div>
+
+        <p><i>Having trouble adding these to your project? <a href="proximity/ios_adding_frameworks_and_libraries.html">Here's
+            some help</a></i></p>
+    </div>
+</div>
+
+<div id="add_fyx_frameworks" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Add these Gimbal Frameworks to your project</h2>
+
+        <p><b><span class="label label-important">Important</span></b> Right click the Frameworks folder and choose the "Add files to ..." option to add these frameworks.</p>
+        <p>
+        It is strongly recommended to add the Gimbal Frameworks using this method to ensure that the Target Membership checkbox is enabled properly.  If an alternate method is used, then the Target Membership of the frameworks must be verified and checked.</p>
+        <div class="well">
+            <ul>
+                <li>Common.embeddedframework</li>
+                <li>ContextCore.embeddedframework</li>
+                <li>ContextLocation.embeddedframework</li>
+                <li>FYX.framework</li>
+                <li>NetworkServices.embeddedframework</li>
+            </ul>
+        </div>
+
+        <p><b><span class="label label-info">Note</span></b> You will find these frameworks in the
+            <code>Frameworks</code> folder inside the Gimbal SDK zip file.</p>
+
+        <p>Your frameworks directory should now look like this:</p>
+
+        <p><img src="images/frameworks.png"/></p>
+
+    </div>
+</div>
+
+<div id="verify_your_target_membership" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h2>Verify Target Membership</h2>
+
+        <p>For each Gimbal Framework, verify the Target Membership checkbox is set:</p>
+
+        <img src="images/targetMembership01.png"/>
+    </div>
+</div>
+
+
+<div id="verify_your_deployment_target_version" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h2>Verify your deployment target version</h2>
+
+        <p>Verify your deployment target matches the iOS version of your device:</p>
+
+        <img src="images/deploymentTarget.png"/>
+    </div>
+</div>
+        <div id="add_proximity" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Add Proximity</h1>
+
+        <p>The following steps will allow you to use Gimbal Proximity features in your application.</p>
+
+    </div>
+</div>
+
+<div id="create_proximity_api_key" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Create Your Proximity API Key</h2>
+
+        <p>Create Your Proximity API Key in the Gimbal Manager.</p>
+
+        <p><a href="https://www.getfyx.com/developer/applications/new"
+              class="btn btn-primary btn-large" target="_blank">Create Proximity API Key &raquo;</a></p>
+
+        <p>You will be presented with a form where you provide an app name and callback URL.</p>
+
+        <p><span class="label label-important">Important</span> The callback URL must be in the
+            <a href='http://developer.apple.com/library/ios/documentation/iphone/conceptual/iphoneosprogrammingguide/AdvancedAppTricks/AdvancedAppTricks.html#//apple_ref/doc/uid/TP40007072-CH7-SW50'
+               target='_blank'>iOS URL scheme</a>
+            format <code>yourUrlScheme://authcode</code>.
+        </p>
+
+        <p><img src="images/CreateApplicationStep01.png"/></p>
+
+        <p>Next, set the visibility to <code>Private</code> and mark the box <code>Allow anonymous users of
+            this App to detect your beacons</code>.</p>
+
+        <p><img src="images/CreateApplicationStep02.png"/></p>
+
+        <p>Hit the 'Generate' button. Once finished, your app will have a generated App ID and App
+            Secret.</p>
+
+        <p><img src="images/RegisteredApplication.png"/></p>
+
+        <p><span class="label label-important">Important</span> You'll need your App ID, App Secret, and
+            Callback URL to build and run your iOS app.</p>
+
+    </div>
+</div>
+
+<div id="register_your_url_scheme" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+        <h2>Register Your URL Scheme</h2>
+
+        <p>For example if you registered <code>test-app://authcode</code> as your Callback URL, you would add
+            <code>test-app</code> as your application URL Scheme. It should look like this.
+        </p>
+
+        <img src="images/URLType.png"/>
+
+        <p><b><span class="label label-info">Note</span></b> For further information on Implementing Custom URL
+            Schemes, please consult the <a
+                    href="http://developer.apple.com/library/ios/documentation/iphone/conceptual/iphoneosprogrammingguide/AdvancedAppTricks/AdvancedAppTricks.html#//apple_ref/doc/uid/TP40007072-CH7-SW50"
+                    target='_blank'>Apple Documentation</a>.</p>
+    </div>
+</div>
+
+<div id="set_proximity_key" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Set Your Proximity API Key and Secret</h2>
+
+        <p>Add this code to the top of your AppDelegate implementation (.m) file.</p>
+
+        <pre class="prettyprint lang-js">
+
+#import &lt;FYX/FYX.h&gt;
+        </pre>
+
+        <p>Add this code to your <code>didFinishLaunchingWithOptions:</code> method, inserting your specific App
+            ID, App Secret, and Callback URL.</p>
+
+        <pre class="prettyprint lang-js">
+
+[FYX setAppId:@"your-app-id" appSecret:@"your-app-secret" callbackUrl:@"your://app-url"];
+        </pre>
+
+        <p><span class="label label-important">Important</span> The values you use for App ID, App
+            Secret, and Callback URL should match the values from the <a href="#create_proximity_api_key">Proximity API
+                Key</a> you created in the Developer Portal.
+        </p>
+
+    </div>
+</div>
+
+<div id="start_service" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Start Proximity Service</h2>
+
+        <p>This call registers the application with the server and starts bluetooth scanning.</p>
+
+        <pre class="prettyprint lang-js">
+
+    #import &lt;FYX/FYX.h&gt;
+        ...
+    [FYX startService:self];
+        </pre>
+
+        <p><span class="label label-info">Note</span> You must add the <code>
+            &lt;FYXServiceDelegate&gt;</code> protocol to your class.</p>
+
+        <p>Once the service start has been attempted by calling <code>startService</code>
+            above, one of the following methods will be invoked on your delegate object once the status of the service
+            has been determined.</p>
+
+        <p><span class="label label-important">Important</span>
+            The SDK will not function properly until the service has
+            successfully started. If you attempt further calls into the SDK before receiving
+            a callback indicating the service has successfully started, they will be rejected by the server.</p>
+
+        <pre class="prettyprint lang-js">
+
+    #import &lt;FYX/FYX.h&gt;
+    ...
+    - (void)serviceStarted
+    {
+        // this will be invoked if the service has successfully started
+        // bluetooth scanning will be started at this point.
+        NSLog(@"FYX Service Successfully Started");
+    }
+        </pre>
+
+        <pre class="prettyprint lang-js">
+
+    #import &lt;FYX/FYX.h&gt;
+    ...
+    - (void)startServiceFailed:(NSError *)error
+    {
+        // this will be called if the service has failed to start
+        NSLog(@"%@", error);
+    }
+        </pre>
+
+    </div>
+</div>
+
+<div id="initialize_sighting_manager" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Initialize the FYXSightingManager</h2>
+
+        <p>This call creates a <code>FYXSightingManager</code> object and will trigger the callback to
+            your
+            delegate of
+            sightings using the default scanning options. Using this call you will be notified of
+            sightings
+            for
+            proximity devices your application is authorized for.</p>
+
+        <pre class="prettyprint lang-js">
+
+    #import &lt;FYX/FYXSightingManager.h&gt;
+    ...
+    @property (nonatomic) FYXSightingManager *sightingManager;
+    ...
+    self.sightingManager = [FYXSightingManager new];
+    self.sightingManager.delegate = self;
+    [self.sightingManager scan];
+        </pre>
+
+    </div>
+</div>
+
+<div id="implement_sighting_delegate" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Implement The FYXSightingDelegate protocol</h2>
+
+        <p>At this point the SDK will be scanning for Bluetooth transmission.
+            In order for your app to received sightings, implement the following.</p>
+
+        <p>To receive sightings you must add the <code>&lt;FYXSightingDelegate&gt;</code> protocol
+            to your class and set the delegate on your <code>FYXSightingManager</code> object.</p>
+
+        <pre class="prettyprint lang-js">
+
+    #import &lt;FYX/FYXSightingManager.h&gt;
+    #import &lt;FYX/FYXTransmitter.h&gt;
+    ...
+    - (void)didReceiveSighting:(FYXTransmitter *)transmitter time:(NSDate *)time RSSI:(NSNumber *)RSSI
+    {
+        // this will be invoked when an authorized transmitter is sighted
+        NSLog(@"I received a FYX sighting!!! %@", transmitter.name);
+    }
+        </pre>
+
+    </div>
+</div>
+
+<div id="activate_your_transmitter" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Activate Your Beacon</h2>
+
+        <p>Activation tells Gimbal to associate the Beacon with your account.</p>
+
+        <p><b><span class="label label-info">Note</span></b> You'll need to open the Beacon to find the ID.
+        </p>
+
+        <img src="images/bid-label.png"/>
+
+        <p><a href="https://www.getfyx.com/developer/transmitters/new"
+              class="btn btn-primary btn-large" target="_blank">Activate
+            Beacon &raquo;</a></p>
+
+    </div>
+
+</div>
+
+<div id="proximity_success" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <div>
+            <h2>Proximity Success</h2>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <p>Once Gimbal Proximity detects the beacon you activated in the Gimbal Manager you will see a log
+                    entry that looks like this.</p>
+
+                <pre class="prettyprint lang-js">
+
+    2013-03-28 11:17:58.947 myproduct[11532:907] I received a FYX sighting!!! MyBeacon
+                </pre>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div id="learn_more" class="row-fluid">
+            <div style="height: 40px;"></div>
+            <div class="span12">
+
+                <h1>Learn More</h1>
+
+                <div class="row-fluid">
+                    <div class="span12">
+
+                        <p>For additional details on how to leverage the SDK functionality, refer to the sample
+                            applications and documentation included in the zip file provided.</p>
+
+
+                        <p><a href="proximity/ios.html" class="btn btn-primary btn-large" target="_blank">Gimbal
+                            Proximity iOS
+                            Guide &raquo;</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <footer class="row-fluid">
+
+         
+
+             <div id="footer" class="span12">
+
+        <p>&copy; 2013 Qualcomm Retail Solutions, Inc. All rights reserved. Gimbal is a trademark of Qualcomm Retail Solutions, Inc. QUALCOMM is a trademark of QUALCOMM Incorporated, registered in the United States and other countries.</p>
+
+            </div>
+         
+
+    </footer>
+
+ 
+
+                
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/nav-scrolling.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B9EB5A71725BAF800CF3D4F /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9EB5A51725BAF800CF3D4F /* ContentViewController.m */; };
+		6B9EB5A81725BAF800CF3D4F /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9EB5A61725BAF800CF3D4F /* ContentViewController.xib */; };
+		9538A0E3157D6D1700FF2FAC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9538A0E2157D6D1700FF2FAC /* UIKit.framework */; };
+		9538A0E5157D6D1700FF2FAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9538A0E4157D6D1700FF2FAC /* Foundation.framework */; };
+		9538A0E7157D6D1700FF2FAC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9538A0E6157D6D1700FF2FAC /* CoreGraphics.framework */; };
+		9538A154157D70E500FF2FAC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9538A148157D70E500FF2FAC /* AppDelegate.m */; };
+		9538A155157D70E500FF2FAC /* bottom_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 9538A149157D70E500FF2FAC /* bottom_image.png */; };
+		9538A156157D70E500FF2FAC /* UserContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9538A14A157D70E500FF2FAC /* UserContext.plist */; };
+		9538A157157D70E500FF2FAC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9538A14B157D70E500FF2FAC /* icon@2x.png */; };
+		9538A158157D70E500FF2FAC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9538A14C157D70E500FF2FAC /* logo.png */; };
+		9538A159157D70E500FF2FAC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9538A14D157D70E500FF2FAC /* main.m */; };
+		9538A15A157D70E500FF2FAC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9538A14F157D70E500FF2FAC /* MainViewController.m */; };
+		9538A15B157D70E500FF2FAC /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9538A150157D70E500FF2FAC /* MainViewController.xib */; };
+		9538A15D157D70E500FF2FAC /* top_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 9538A153157D70E500FF2FAC /* top_image.png */; };
+		9538A188157D714D00FF2FAC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9538A187157D714D00FF2FAC /* Security.framework */; };
+		9538A18A157D715200FF2FAC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9538A189157D715200FF2FAC /* CoreData.framework */; };
+		9538A18C157D715900FF2FAC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9538A18B157D715900FF2FAC /* MapKit.framework */; };
+		9538A18E157D715E00FF2FAC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9538A18D157D715E00FF2FAC /* CoreLocation.framework */; };
+		95546C5515CC4C1500FEB166 /* ContextLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95546C5215CC4C1500FEB166 /* ContextLocation.framework */; };
+		95546C5715CC4C1500FEB166 /* DataModels.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 95546C5415CC4C1500FEB166 /* DataModels.bundle */; };
+		969FA98315B61E4500BC699F /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FA96815B61E4500BC699F /* Common.framework */; };
+		969FA98515B61E4500BC699F /* ContextCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FA96B15B61E4500BC699F /* ContextCore.framework */; };
+		969FA99B15B61E4500BC699F /* ContextProfiling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FA97D15B61E4500BC699F /* ContextProfiling.framework */; };
+		969FA99D15B61E4500BC699F /* rules.txt in Resources */ = {isa = PBXBuildFile; fileRef = 969FA97F15B61E4500BC699F /* rules.txt */; };
+		969FA99F15B61E4500BC699F /* NetworkServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969FA98115B61E4500BC699F /* NetworkServices.framework */; };
+		D1AB5895173C25E200048AD3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AB5894173C25E200048AD3 /* libz.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6B9EB5A41725BAF800CF3D4F /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentViewController.h; path = Mallmart/ContentViewController.h; sourceTree = SOURCE_ROOT; };
+		6B9EB5A51725BAF800CF3D4F /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContentViewController.m; path = Mallmart/ContentViewController.m; sourceTree = SOURCE_ROOT; };
+		6B9EB5A61725BAF800CF3D4F /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContentViewController.xib; path = Mallmart/ContentViewController.xib; sourceTree = SOURCE_ROOT; };
+		9538A0DE157D6D1700FF2FAC /* Mallmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mallmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9538A0E2157D6D1700FF2FAC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9538A0E4157D6D1700FF2FAC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9538A0E6157D6D1700FF2FAC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9538A147157D70E500FF2FAC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Mallmart/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		9538A148157D70E500FF2FAC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Mallmart/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		9538A149157D70E500FF2FAC /* bottom_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottom_image.png; path = Mallmart/bottom_image.png; sourceTree = SOURCE_ROOT; };
+		9538A14A157D70E500FF2FAC /* UserContext.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = UserContext.plist; path = Mallmart/UserContext.plist; sourceTree = SOURCE_ROOT; };
+		9538A14B157D70E500FF2FAC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Mallmart/icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		9538A14C157D70E500FF2FAC /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Mallmart/logo.png; sourceTree = SOURCE_ROOT; };
+		9538A14D157D70E500FF2FAC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Mallmart/main.m; sourceTree = SOURCE_ROOT; };
+		9538A14E157D70E500FF2FAC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Mallmart/MainViewController.h; sourceTree = SOURCE_ROOT; };
+		9538A14F157D70E500FF2FAC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Mallmart/MainViewController.m; sourceTree = SOURCE_ROOT; };
+		9538A150157D70E500FF2FAC /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = Mallmart/MainViewController.xib; sourceTree = SOURCE_ROOT; };
+		9538A151157D70E500FF2FAC /* Mallmart-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Mallmart-Info.plist"; path = "Mallmart/Mallmart-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9538A152157D70E500FF2FAC /* Mallmart-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Mallmart-Prefix.pch"; path = "Mallmart/Mallmart-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		9538A153157D70E500FF2FAC /* top_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = top_image.png; path = Mallmart/top_image.png; sourceTree = SOURCE_ROOT; };
+		9538A187157D714D00FF2FAC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9538A189157D715200FF2FAC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9538A18B157D715900FF2FAC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9538A18D157D715E00FF2FAC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		95546C5215CC4C1500FEB166 /* ContextLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ContextLocation.framework; sourceTree = "<group>"; };
+		95546C5415CC4C1500FEB166 /* DataModels.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DataModels.bundle; sourceTree = "<group>"; };
+		969FA96815B61E4500BC699F /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Common.framework; sourceTree = "<group>"; };
+		969FA96B15B61E4500BC699F /* ContextCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ContextCore.framework; sourceTree = "<group>"; };
+		969FA97D15B61E4500BC699F /* ContextProfiling.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ContextProfiling.framework; sourceTree = "<group>"; };
+		969FA97F15B61E4500BC699F /* rules.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rules.txt; sourceTree = "<group>"; };
+		969FA98115B61E4500BC699F /* NetworkServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NetworkServices.framework; sourceTree = "<group>"; };
+		D1AB5894173C25E200048AD3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9538A0DB157D6D1700FF2FAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1AB5895173C25E200048AD3 /* libz.dylib in Frameworks */,
+				9538A18E157D715E00FF2FAC /* CoreLocation.framework in Frameworks */,
+				9538A18C157D715900FF2FAC /* MapKit.framework in Frameworks */,
+				9538A18A157D715200FF2FAC /* CoreData.framework in Frameworks */,
+				9538A188157D714D00FF2FAC /* Security.framework in Frameworks */,
+				9538A0E3157D6D1700FF2FAC /* UIKit.framework in Frameworks */,
+				9538A0E5157D6D1700FF2FAC /* Foundation.framework in Frameworks */,
+				9538A0E7157D6D1700FF2FAC /* CoreGraphics.framework in Frameworks */,
+				969FA98315B61E4500BC699F /* Common.framework in Frameworks */,
+				969FA98515B61E4500BC699F /* ContextCore.framework in Frameworks */,
+				969FA99B15B61E4500BC699F /* ContextProfiling.framework in Frameworks */,
+				969FA99F15B61E4500BC699F /* NetworkServices.framework in Frameworks */,
+				95546C5515CC4C1500FEB166 /* ContextLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9538A0D3157D6D1700FF2FAC = {
+			isa = PBXGroup;
+			children = (
+				9538A0E8157D6D1700FF2FAC /* Mallmart-SampleApp */,
+				9538A0E1157D6D1700FF2FAC /* Frameworks */,
+				9538A0DF157D6D1700FF2FAC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9538A0DF157D6D1700FF2FAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9538A0DE157D6D1700FF2FAC /* Mallmart.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9538A0E1157D6D1700FF2FAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1AB5894173C25E200048AD3 /* libz.dylib */,
+				95546C5115CC4C1500FEB166 /* ContextLocation.embeddedframework */,
+				969FA96715B61E4500BC699F /* Common.embeddedframework */,
+				969FA96A15B61E4500BC699F /* ContextCore.embeddedframework */,
+				969FA97C15B61E4500BC699F /* ContextProfiling.embeddedframework */,
+				969FA98015B61E4500BC699F /* NetworkServices.embeddedframework */,
+				9538A0E2157D6D1700FF2FAC /* UIKit.framework */,
+				9538A0E4157D6D1700FF2FAC /* Foundation.framework */,
+				9538A0E6157D6D1700FF2FAC /* CoreGraphics.framework */,
+				9538A18D157D715E00FF2FAC /* CoreLocation.framework */,
+				9538A18B157D715900FF2FAC /* MapKit.framework */,
+				9538A189157D715200FF2FAC /* CoreData.framework */,
+				9538A187157D714D00FF2FAC /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9538A0E8157D6D1700FF2FAC /* Mallmart-SampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				9538A147157D70E500FF2FAC /* AppDelegate.h */,
+				9538A148157D70E500FF2FAC /* AppDelegate.m */,
+				9538A14E157D70E500FF2FAC /* MainViewController.h */,
+				9538A14F157D70E500FF2FAC /* MainViewController.m */,
+				9538A150157D70E500FF2FAC /* MainViewController.xib */,
+				6B9EB5A41725BAF800CF3D4F /* ContentViewController.h */,
+				6B9EB5A51725BAF800CF3D4F /* ContentViewController.m */,
+				6B9EB5A61725BAF800CF3D4F /* ContentViewController.xib */,
+				9538A113157D6DAA00FF2FAC /* Supporting Files */,
+			);
+			path = "Mallmart-SampleApp";
+			sourceTree = "<group>";
+		};
+		9538A113157D6DAA00FF2FAC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9538A14D157D70E500FF2FAC /* main.m */,
+				9538A152157D70E500FF2FAC /* Mallmart-Prefix.pch */,
+				9538A151157D70E500FF2FAC /* Mallmart-Info.plist */,
+				9538A14A157D70E500FF2FAC /* UserContext.plist */,
+				9538A114157D6DBF00FF2FAC /* Images */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9538A114157D6DBF00FF2FAC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9538A149157D70E500FF2FAC /* bottom_image.png */,
+				9538A14B157D70E500FF2FAC /* icon@2x.png */,
+				9538A14C157D70E500FF2FAC /* logo.png */,
+				9538A153157D70E500FF2FAC /* top_image.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		95546C5115CC4C1500FEB166 /* ContextLocation.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				95546C5215CC4C1500FEB166 /* ContextLocation.framework */,
+				95546C5315CC4C1500FEB166 /* Resources */,
+			);
+			name = ContextLocation.embeddedframework;
+			path = "../../Frameworks/ContextLocation.embeddedframework";
+			sourceTree = "<group>";
+		};
+		95546C5315CC4C1500FEB166 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				95546C5415CC4C1500FEB166 /* DataModels.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		969FA96715B61E4500BC699F /* Common.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				969FA96815B61E4500BC699F /* Common.framework */,
+				969FA96915B61E4500BC699F /* Resources */,
+			);
+			name = Common.embeddedframework;
+			path = "../../Frameworks/Common.embeddedframework";
+			sourceTree = "<group>";
+		};
+		969FA96915B61E4500BC699F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		969FA96A15B61E4500BC699F /* ContextCore.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				969FA96B15B61E4500BC699F /* ContextCore.framework */,
+				969FA96C15B61E4500BC699F /* Resources */,
+			);
+			name = ContextCore.embeddedframework;
+			path = "../../Frameworks/ContextCore.embeddedframework";
+			sourceTree = "<group>";
+		};
+		969FA96C15B61E4500BC699F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		969FA97C15B61E4500BC699F /* ContextProfiling.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				969FA97D15B61E4500BC699F /* ContextProfiling.framework */,
+				969FA97E15B61E4500BC699F /* Resources */,
+			);
+			name = ContextProfiling.embeddedframework;
+			path = "../../Frameworks/ContextProfiling.embeddedframework";
+			sourceTree = "<group>";
+		};
+		969FA97E15B61E4500BC699F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				969FA97F15B61E4500BC699F /* rules.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		969FA98015B61E4500BC699F /* NetworkServices.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				969FA98115B61E4500BC699F /* NetworkServices.framework */,
+				969FA98215B61E4500BC699F /* Resources */,
+			);
+			name = NetworkServices.embeddedframework;
+			path = "../../Frameworks/NetworkServices.embeddedframework";
+			sourceTree = "<group>";
+		};
+		969FA98215B61E4500BC699F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9538A0DD157D6D1700FF2FAC /* Mallmart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9538A0F6157D6D1700FF2FAC /* Build configuration list for PBXNativeTarget "Mallmart" */;
+			buildPhases = (
+				9538A0DA157D6D1700FF2FAC /* Sources */,
+				9538A0DB157D6D1700FF2FAC /* Frameworks */,
+				9538A0DC157D6D1700FF2FAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mallmart;
+			productName = "Mallmart-SampleApp";
+			productReference = 9538A0DE157D6D1700FF2FAC /* Mallmart.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9538A0D5157D6D1700FF2FAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = 9538A0D8157D6D1700FF2FAC /* Build configuration list for PBXProject "Mallmart-SampleApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9538A0D3157D6D1700FF2FAC;
+			productRefGroup = 9538A0DF157D6D1700FF2FAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9538A0DD157D6D1700FF2FAC /* Mallmart */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9538A0DC157D6D1700FF2FAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9538A155157D70E500FF2FAC /* bottom_image.png in Resources */,
+				9538A156157D70E500FF2FAC /* UserContext.plist in Resources */,
+				9538A157157D70E500FF2FAC /* icon@2x.png in Resources */,
+				9538A158157D70E500FF2FAC /* logo.png in Resources */,
+				9538A15B157D70E500FF2FAC /* MainViewController.xib in Resources */,
+				9538A15D157D70E500FF2FAC /* top_image.png in Resources */,
+				969FA99D15B61E4500BC699F /* rules.txt in Resources */,
+				95546C5715CC4C1500FEB166 /* DataModels.bundle in Resources */,
+				6B9EB5A81725BAF800CF3D4F /* ContentViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9538A0DA157D6D1700FF2FAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9538A154157D70E500FF2FAC /* AppDelegate.m in Sources */,
+				9538A159157D70E500FF2FAC /* main.m in Sources */,
+				9538A15A157D70E500FF2FAC /* MainViewController.m in Sources */,
+				6B9EB5A71725BAF800CF3D4F /* ContentViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9538A0F4157D6D1700FF2FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9538A0F5157D6D1700FF2FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9538A0F7157D6D1700FF2FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Frameworks/Common.embeddedframework\"",
+					"\"$(SRCROOT)/../../Frameworks/ContextCore.embeddedframework\"",
+					"\"$(SRCROOT)/../../Frameworks/NetworkServices.embeddedframework\"",
+					"\"$(SRCROOT)/../../Frameworks/ContextProfiling.embeddedframework\"",
+					"\"$(SRCROOT)/../../Frameworks/ContextLocation.embeddedframework\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mallmart/Mallmart-Prefix.pch";
+				INFOPLIST_FILE = "Mallmart/Mallmart-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = Mallmart;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9538A0F8157D6D1700FF2FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Frameworks/Common.embeddedframework\"",
+					"\"$(SRCROOT)/../../Frameworks/ContextCore.embeddedframework\"",
+					"\"$(SRCROOT)/../../Frameworks/NetworkServices.embeddedframework\"",
+					"\"$(SRCROOT)/../../Frameworks/ContextProfiling.embeddedframework\"",
+					"\"$(SRCROOT)/../../Frameworks/ContextLocation.embeddedframework\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mallmart/Mallmart-Prefix.pch";
+				INFOPLIST_FILE = "Mallmart/Mallmart-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = Mallmart;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9538A0D8157D6D1700FF2FAC /* Build configuration list for PBXProject "Mallmart-SampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9538A0F4157D6D1700FF2FAC /* Debug */,
+				9538A0F5157D6D1700FF2FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9538A0F6157D6D1700FF2FAC /* Build configuration list for PBXNativeTarget "Mallmart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9538A0F7157D6D1700FF2FAC /* Debug */,
+				9538A0F8157D6D1700FF2FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9538A0D5157D6D1700FF2FAC /* Project object */;
+}

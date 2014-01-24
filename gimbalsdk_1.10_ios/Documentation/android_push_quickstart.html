@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gimbal Push Android Quickstart</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/overrides.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" onload="prettyPrint();">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="https://manager.gimbal.com"><img src="images/gimbal_logo.png"></a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                      
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Overview
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Overview</a></li>
+                            <li><a href="proximity_overview.html">Proximity Overview</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Context
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu">
+                            <a href="#">iOS</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="ios_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="ios_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="context/context_ios.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown-submenu">
+                            <a href="#">Android</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="android_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="android_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="android_push_quickstart.html">Push Quick Start</a></li> 
+                              <li><a href="context/context_android.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Proximity
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="ios_proximity_quickstart.html">Proximity Quick Start</a></li>
+                          <li><a href="proximity/ios.html">Proximity Developer Guide</a></li>
+                          <li><a href="ios/html/index.html">Proximity API</a></li>
+                          <li><a href="ios_proximity_based_communication_guide.html">Proximity Based Communicate Guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="rest.html">REST API</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+    <div class="row-fluid">
+
+	<div class="span3">
+		<div id="sidenav" class="well sidebar-nav sidebar-nav-fixed" style="overflow-y:auto;height:auto;">
+			<ul class="nav nav-list">
+				<li><a href="#google_setup">Google Setup</a></li>
+                <li><a href="#enable_gimbal_push">Enable Gimbal Push</a></li>
+                <li><a href="#add_push_to_manager">Configure Push on Manager</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Configure Push on Application<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+                        <li><a href="#add_google_play_services">Add Google Play Services</a></li>
+                        <li><a href="#application_manifest_changes">Application Manifest Changes</a></li>
+                        <li><a href="#register_for_push_notifications">Register for Push Notifications</a></li>
+                        <li><a href="#receive_push_content">Receive Push Content</a></li>
+					</ul>
+				</li>
+                <li><a href="#send_push_to_application">Send Push To Application</a></li>
+				<li><a href="#learn_more">Learn More</a></li>
+
+			</ul>
+		</div>
+	</div>
+
+    <div class="span9">
+
+        <div class="hero-unit">
+
+            <h1>Android Push Quick Start</h1>
+
+            <p>Get Push up and running in your Android App using Gimbal.</p>
+
+        </div>
+
+        
+<div id="gimbal_quickstart" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+		<h1>Setup Gimbal Application</h1>
+
+		<p><b><span class="label label-important">Important</span></b> This guide assumes you have a Android project setup with Gimbal. Please follow Gimbal Quick Start guide if you have not yet setup an Android project with Gimbal.</p>
+        
+        <p><a href="android_quickstart.html" class="btn btn-primary btn-large"
+              target="_blank">Gimbal Android Quickstart &raquo;</a></p>
+
+    </div>
+</div>
+        <div id="google_setup" class="row-fluid">
+    <div style="height: 4 0px;"></div>
+    <div class="span12">
+
+        <h2>Google Cloud Messaging (GCM)</h2>
+
+        <p>Gimbal uses Google Cloud Messaging (GCM) for enabling push on Android. In order to use GCM you'll have to setup your application on Google Cloud Console and obtain a Server API key (Google Cloud Messaging Key) and generate a Sender ID. Please refer to <a href="http://developer.android.com/google/gcm/gs.html">GCM getting started</a> and follow the steps to generate these keys. Here's an overview of the steps you'll have to follow:</p>
+
+        <p>If you are using old <a href="https://code.google.com/apis/console">Google API console page</a></p>
+        <div class="well">
+            <ul>
+                <li>Create an Google API project</li>
+                <li>Note the value after #project: present in browser URL. This is used as Sender ID</li>
+                <li>Turn on Google Cloud Messaging from Services menu</li>
+                <li>Select API access from Google APIs console</li>
+                <li>Click on Create a new Server key</li>
+                <li>Make note of the newly generated Server API key</li>
+            </ul>
+        </div>
+
+        <p>If you are using new <a href="https://cloud.google.com/console">Google Cloud Console</a></p>
+        <div class="well">
+            <ul>
+                <li>Create a new project</li>
+                <li>Note the Project Number on the newly created project detail page. This is used as Sender ID</li>
+                <li>Turn on Google Cloud Messaging from APIs & auth menu</li>
+                <li>Register a new Web Application from Registered apps menu</li>
+                <li>Make note of the newly generated API key from Server Key section on Registered App detail page</li>
+            </ul>
+        </div>
+
+         <p><b><span class="label label-info">Note</span></b> Before moving forward make sure that you have obtained the Server API key and Sender ID (project number) from Google Cloud console. Also ensure that Google Cloud Messaging for Android is enabled for your application.</p>
+
+    </div>
+</div>
+
+
+<div id="enable_gimbal_push" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Enable Gimbal Push</h2>
+
+        <p>Once you have obtained the Server API key (Google Cloud Messaging Key) and Sender ID from Google Cloud Console for you application follow these steps to enable Push on Android using Gimbal</p>
+
+    </div>
+</div>
+
+<div id="add_push_to_manager" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Add Google API to Gimbal Manager</h2>
+
+        <p>On Gimbal Manager, go to your existing Android application and click on Configure to setup Android push. Enter the Server API Key (Google Cloud Messaging Key) and save. Now your application on Manager is set to send push messages to your Android application running on the device.</p>
+
+        <p><img src="images/android_push_manager.png"/></p>
+
+    </div>
+</div>
+
+<div id="add_push_to_application" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Configuring the Client Application</h2>
+
+        <div id="add_google_play_services" class="row-fluid">
+            <div class="span12">
+                <h3>Add Google Play Services</h3>
+
+                <p>Google Play service is used on the client to enable receiving push messages. Add Google Play Services apklib project as a library to your existing application. Google has detailed instructions <a href="http://developer.android.com/google/play-services/setup.html">here</a> to set it up. Here's an overview of the steps you'll have to follow:</p>
+
+                <div class="well">
+                    <ul>
+                        <li>Download Google Play Service from Android SDK Manager</li>
+                        <li>Import google-play-services_lib project in Eclipse as existing android project (Usually found at &lt;android-installation&gt;/extras/google/google_play_services/libproject/google-play-services_lib)</li>
+                        <li>Add a reference to the apklib project on your project. Detailed instructions <a href="http://developer.android.com/tools/projects/projects-eclipse.html#ReferencingLibraryProject">here</a>.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="application_manifest_changes" class="row-fluid">
+            <div class="span12">
+                <h3>Application Manifest Changes</h3>
+
+                <p>Edit your application's <code>AndroidManifest.xml</code> file, and add the following declaration within the <code>&lt;application&gt;</code> element. This embeds the version of Google Play services that the app was compiled with.</p>
+
+<pre class="prettyprint lang-xml">
+    &lt;meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" /&gt;
+</pre>
+
+                <p>Also add these permissions to your application's <code>AndroidManifest.xml</code> file (in addition to all permissions needed by Gimbal) to allow Google to send push messages to your application.</p>
+
+<pre class="prettyprint lang-xml">
+    &lt;uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /&gt;
+    &lt;permission android:name="<span class="nocode">com.companyname.applicationname</span>.gcm.permission.C2D_MESSAGE" android:protectionLevel="signature" /&gt;
+    &lt;uses-permission android:name="<span class="nocode">com.companyname.applicationname</span>.gcm.permission.C2D_MESSAGE" /&gt;
+</pre>
+
+                <p><b><span class="label label-info">Note</span></b> Make sure to change <code>"com.companyname.applicationname"</code> to your application's package name in above permissions.</p>
+            </div>
+        </div>
+        <div id="register_for_push_notifications" class="row-fluid">
+            <div class="span12">
+                <h3>Register for Push Notifications</h3>
+
+                <p>Once Gimbal is enabled in your application you can tell Gimbal your application is interested in receiving Push Messages. You can make a call to <code>ContextPushNotificationsConnector.registerForRemoteNotification</code> to register with Gimbal to receive Push. SENDER_ID is the project number that was generated when you created a project on Google Cloud Console.</p>
+
+                <pre class="prettyprint lang-js">
+
+    contextCoreConnector.enable(this, new Callback<Void>() {
+        @Override
+        public void success(Void responseObject) {
+            ContextPushNotificationsConnector.registerForRemoteNotification(context, SENDER_ID);
+        }
+
+        @Override
+        public void failure(int statusCode, String errorMessage) {
+            //Failed
+        }
+    });
+                </pre>
+
+            </div>
+        </div>
+
+        <div id="receive_push_content" class="row-fluid">
+            <div class="span12">
+                <h3>Receive Push Content</h3>
+
+                <p>In order to receive Push Content, create an instance of <code>ContextCoreConnector</code> or use the instance that was created earlier and add an implementation of <code>ContentListener</code> to it. Whenever a push is sent to the client, Gimbal will call your application on <code>ContentListener.contentEvent</code>. Your application can now decide whether or not to raise a notification to the User.</p>
+
+                <pre class="prettyprint lang-js">
+                
+    ContextCoreConnector contextCoreConnector = ContextCoreConnectorFactory.get(context);
+        contextCoreConnector.addContentListener(new ContentListener() {
+        @Override
+        public void contentEvent(ContentEvent contentEvent) {
+            // Push Content Received
+        }
+    });
+                  </pre>
+
+                <p><b><span class="label label-info">Note</span></b> If you want your Listener to survive service/device restart, then make sure you have an Android Service in your application that is started as <code>STICKY</code> and the above code is executed in <code>onCreate</code> of the service.</p>
+                <p><b><span class="label label-info">Note</span></b> In order to send Push only to users in certain geofences, you'll have to add <code>place.state.available.on.server=true</code> to usercontext.properties in your application.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="send_push_to_application" class="row-fluid">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h2>Send Instant Push</h2>
+
+        <p>You are ready to send an Instant Push to the client. Make sure you run your application on a device and enable Gimbal. Go to the Communications tab on Gimbal Manager to send an Instant Push. Click on Add Communication on the right and select Instant Communication.</p>
+
+        <p><img src="images/add_instant_communication.png"/></p>
+        
+        <p>On the next page fill in the details of your push message and click on Save &amp; Publish to send your Instant Communication to your device.</p>
+        <p><img src="images/publish_instant_communication.png"/></p>
+
+    </div>
+</div>
+
+
+        <div id="learn_more" class="row-fluid">
+            <div style="height: 40px;"></div>
+            <div class="span12">
+
+                <h1>Learn More</h1>
+
+                <div class="row-fluid">
+                    <div class="span12">
+
+                        <p>For additional details on how to leverage the SDK functionality, refer to the sample
+                            applications and documentation included in the zip file provided.</p>
+
+                        <p><a href="Gimbal_SDK_for_Android.pdf" class="btn btn-primary btn-large" target="_blank">Detailed Gimbal
+                            Android Guide &raquo;</a></p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <footer class="row-fluid">
+
+         
+
+             <div id="footer" class="span12">
+
+        <p>&copy; 2013 Qualcomm Retail Solutions, Inc. All rights reserved. Gimbal is a trademark of Qualcomm Retail Solutions, Inc. QUALCOMM is a trademark of QUALCOMM Incorporated, registered in the United States and other countries.</p>
+
+            </div>
+         
+
+    </footer>
+
+ 
+
+                
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/nav-scrolling.js"></script>
+
+</body>
+</html>

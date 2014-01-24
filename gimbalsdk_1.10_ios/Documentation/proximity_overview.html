@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Proximity Overview</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/overrides.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" onload="prettyPrint();">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="https://manager.gimbal.com"><img src="images/gimbal_logo.png"></a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                      
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Overview
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Overview</a></li>
+                            <li><a href="proximity_overview.html">Proximity Overview</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Context
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li class="dropdown-submenu">
+                            <a href="#">iOS</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="ios_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="ios_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="context/context_ios.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown-submenu">
+                            <a href="#">Android</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="android_quickstart.html">Gimbal Quick Start</a></li>
+                              <li><a href="android_geofence_quickstart.html">Geofence Quick Start</a></li> 
+                              <li><a href="android_push_quickstart.html">Push Quick Start</a></li> 
+                              <li><a href="context/context_android.html">Context Developer Guide</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Proximity
+                            <b class="caret black-caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="ios_proximity_quickstart.html">Proximity Quick Start</a></li>
+                          <li><a href="proximity/ios.html">Proximity Developer Guide</a></li>
+                          <li><a href="ios/html/index.html">Proximity API</a></li>
+                          <li><a href="ios_proximity_based_communication_guide.html">Proximity Based Communicate Guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="rest.html">REST API</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+    <div class="row-fluid">
+
+    <div class="span3">
+        <div id="sidenav" class="well sidebar-nav sidebar-nav-fixed" style="overflow-y:auto;height:auto;">
+            <ul class="nav nav-list">
+                <li><a href="#platforms">Supported Platforms</a></li>             
+                <li><a href="#beacons">Beacons</a></li>
+                <li><a href="#applications">Proximity Enabled Applications</a>
+                    <ul class="nav nav-list">
+                        <li><a href="#sightings">Sightings</a></li>
+                        <li><a href="#visits">Visits</a></li>
+                        <li><a href="#rules">Rules</a></li>
+                        <li><a href="#visibility">Visibility</a></li>
+                        <li><a href="#sightings_background">Sightings in Background Mode</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="span9">
+        <div class="hero-unit">
+            <h1>Proximity</h1>
+            <p>Based on Bluetooth Low Energy (BLE) beacons that provide finer grain proximity context.</p>
+        </div>
+        <div id="platforms" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Supported Platforms</h1>
+        <h3>iOS&#8482</h3>
+        <p>
+        	Gimbal Proximity is currently available for iOS&#8482 and is supported by all iOS&#8482 devices that support BLE.  This includes iPhone 4s or later, iPad 3rd gen and later, and iPod 5th gen and later.
+        </p>
+        <h3>Android&#8482</h3>
+        <p>
+            Work is actively in progress on Android&#8482 and Gimbal Proximity will release an SDK for Android&#8482 soon.
+        </p>
+        <hr/>
+    </div>
+</div>
+        <div id="beacons" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Beacons</h1>
+        <p>
+        	The Gimbal Proximity Beacon is a BLE powered device that provides context about proximity and also ambient temperature.  They broadcast a rolling encrypted code to ensure only users with the correct privileges can see the beacon's information.  The beacons are configured to transmit at a rate that optimizes reactiveness on applications and battery-life of the beacons.  They come in two form factors: Series 10 and Series 20.
+        </p>
+        <span class="label label-warning">Note</span> Across all documentation and SDKs the terms 'Beacon' and 'Transmitter' are interchangeable
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h3>Series 10</h3>
+                <div style="float:left; width: 220px" >
+                	<center>
+                		<img src="images/consumer_beacon.png" alt="Series 10 Image" />
+                	</center>
+                </div>
+                <p>
+                	Series 10 are small devices measuring no more than 1" x 0.125" x 1.5"  (L x W x H).  These beacons are powered by a 3V CR2032 cell battery that lasts for about 3 months.  These by default transmit at a rate of 645ms.
+                </p>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h3>Series 20</h3>
+                <div style="float:left; width: 220px">
+                	<center>
+                		<img src="images/retail_beacon.png" alt="Series 20 Image"/>
+            		</center>
+            	</div>
+                <p>
+                	Series 20 are meant to be affixed to a location with industrial tape or screws.  These beacons are much larger, 3.75" x 3.125" x 0.875" (L x W x H) than the Series 10 and are powered by 4 x AA batteries which last up to a year without replacement.  These beacons can be affixed inside or outside as they are weather proof and by default transmit at a rate of 100ms.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+        <div id="applications" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Proximity Enabled Applications</h1>
+        
+        <p>
+        	Applications that are using the Gimbal Proximity SDK are able to detect beacons which are in close proximity.  Depending on the <a href="#visibility">visibility</a> level of the application and ownership of the beacon, more information about the beacon (including a given name, temperature and RSSI value) can be displayed.  Below are some terms and information to give you a solid background on the Proximity Development Environment so you can provide a quality user experience.
+        </p>
+        <h3> The Big Picture </h3>
+        <img src="images/proximity_environment.png" alt="Proximity Environment Image"/>
+        <hr/>
+
+        <div id="sightings" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Sightings</h1>
+        <p>
+        	 A sighting occurs when a Proximity Enabled Application receives a BLE packet from a proximate beacon.  Depending on the <a href="#visibility">visibility</a> of the application, the Gimbal Proximity SDK notifies the application of the sighting. It will contain information about the event such as: RSSI value, Beacon Name, Icon Url, Battery Level, and Temperature.  The application can then react to the sighting by showing a coupon deal, displaying information about the current location, or giving a customized greeting.
+        </p>
+        <p>
+            The Gimbal Proximity SDK, in addition to notifying the application, also notifies the Gimbal Manager Servers periodically of all sightings.  The Gimbal Manager Servers can then provide analytics data to third-party developer servers through a <a href="rest.html#sightings_callback">REST interface</a>.
+        </p>
+
+        <p>
+            Sightings passed to the application are real-time and can be referred to as <strong>client-side sightings</strong>.  Sightings received by the Gimbal Manager Servers can be referred to as <strong>server-side sightings</strong>.  These sightings are not real-time and are meant for analytics, such as historical sightings of beacons.
+        </p>
+        <hr/>
+    </div>
+</div>
+        <div id="visits" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Visits</h1>
+        <p>
+        	A common use case of Proximity is to treat a beacon as a micro-fence that triggers arrival and departure events.  This allows a developer to know when a user is near a particular location and for how long they dwelled.  This concept is referred to as a Visit in the SDK.
+        </p>
+        <p>
+            The life cycle of a visit is:
+            <ol>
+                <li>Arrival (First sighting)</li>
+                <li>Sighted (One or more sightings)</li>
+                <li>Departure (No longer sighted)</li>
+            </ol>
+            After receiving an arrival event, the application will be updated about the ongoing visit every time a new <a href="#sighting">sighting</a> is received.  The update will contain the current dwell time and RSSI of the most current sighting.   When the application no longer sights the beacon after a certain amount of time, the departure event is triggered.
+        </p>
+        <p>
+            A visit has the following characteristics that affect the life cycle:
+            <ul>
+                <li>Arrival RSSI</li>
+                <li>Departure RSSI</li>
+                <li>Departure Interval</li>
+            </ul>
+        </p>
+        
+        <dl>
+            <dt>Arrival RSSI</dt>
+            <dd>This value affects the arrival event.  Only sightings that have an RSSI value of "Arrival RSSI" or higher is considered an arrival.  If this value is not set, any RSSI value will trigger an arrival event.</dd>
+            <dt>Departure RSSI</dt>
+            <dd>This value affects the departure event.  Sightings with an RSSI value greater than the "Departure RSSI" are considered proximate.  Sightings with an RSSI value of "Departure RSSI" or lower are not considered to be in proximity.  Although the SDK may still detect the beacon, it considers the beacon 'out of range' with respect to the visit.  If this value is not set, the SDK will consider any beacon it detects as in-range, regardless of the RSSI value.</dd>
+            <dt>Departure Interval</dt>
+            <dd>This value determines how long a beacon is 'out of range' to be considered departed.  When the beacon has been 'out of range' for longer than this interval, the visit's life cycle ends and a departure event is triggered.  Any new sightings for this beacon will start a new visit.</dd>
+        </dl>
+        <p>
+            Much like sightings, there are <strong>client-side visits</strong> and <strong>server-side visits</strong>.  Client-side visits are real-time events. The visit characteristics can be configured via the SDK.  Server-side visits are not real-time as the SDK periodically posts sightings to the Gimbal Server to preserve battery life.  They can further be impacted by the device's network connectivity.  A developer can tune server-side visits via <a href="#rules">rules</a>. 
+        </p>
+        <hr/>
+    </div>
+</div>
+        <div id="rules" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Rules</h1>
+        <p>
+        	A rule gives a developer the ability to receive notifications of <a href="#visits">server-side visits</a>.  Depending on the application's <a href="#visibility">visibility</a>, when the SDK <a href="#sightings">sights</a> a beacon, it sends this sighting to the Gimbal Manager Server. It will then determine if the sighting matches a developer's rule.  Upon a rule match, the Gimbal Manager Server notifies the developer's server of visit events through the configured "Sighting Callback URL."
+        </p>
+        <hr/>
+
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h3>Creating a Rule</h3>
+
+                <p>
+                    To create a rule, visit the Gimbal Manager and navigate to the Proximity->Rules section. Click on "New Rule" to see the screen below:
+                </p>
+                <p>
+                    <img src="images/proximity_new_rule.png" alt="New Rule"/>
+                </p>
+                <p>
+                    The characteristics of a rule are as follows:
+                    <dl>
+                        <dt>App Title</dt>
+                        <dd>Required: The title of an application owned by the developer.</dd>
+                        <dt>Sighting Message Frequency</dt>
+                        <dd>Required: This is the interval, in seconds, at which the Gimbal Manager will send a Sighting event to the server at "Sighting Callback URL."</dd>
+                        <dt>Exit Interval</dt>
+                        <dd>Required: This is the elapsed time, in seconds, that determines when a visit is closed.  If no sighting reaches the Gimbal Server within the Exit Interval, the visit is considered departed.  The departure event is then sent to the callback URL.</dd>
+                        <dt>Entry Signal Strength</dt>
+                        <dd>Optional: If supplied, only sightings whose values are "Entry Signal Strength" or larger will trigger an arrival event.</dd>
+                        <dt>Exit Signal Strength</dt>
+                        <dd>Optional: If supplied, sightings whose values are "Entry Signal Strength" or smaller will be ignored for visit processing and will act similar to have not being sighted.</dd>
+                        <dt>Sighting Callback URL</dt>
+                        <dd>Optional: This is the URL to the <a href="rest.html#sightings_callback"> Sighting Callback</a> endpoint hosted by the developer to which all visit events are sent.</dd>
+                    </dl>
+                    As mentioned earlier, the SDK sights every beacon in proximity but the beacons are filtered up to the app by their visibility.  Although the sightings are filtered at the application level, the SDK still sends <strong><i>all sightings</i></strong> to the Gimbal Manager Server.  Therefore it is possible for a sighting to match against multiple rules on the Gimbal Manager Server, even across applications by different developers.  This means that server-side visits can be generated from sightings posted by other applications.  To limit rule-matching to sightings that originate only from the same application, select the check box labeled "Only notify when sightings is from the app selected".
+                </p>
+            </div>
+        </div>      
+    </div>
+</div>
+        <div id="visibility" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Visibility</h1>
+        <p>
+            While creating a <a href="https://proximity.gimbal.com/developer/applications/new">new Proximity API Key</a> you can set your application's visibility options.  These options determine the ability of your application to <a href="#sightings">sight</a> beacons and also how the server matches <a href="#rules"> rules </a> for <a href="#visits">server-side visits</a>.
+        </p>
+        <p>
+            <img src="images/proximity_visibility_options.png" alt="Visibility Options Image"/>
+        </p>
+        <hr/>
+        <p>
+            There are three visibility options (Private, Authorized, Public) and for these visibilities you have the option of allowing anonymous users to detect your (the developer's) beacons.  The roles involved in understanding visibility are: Developer, OAuthed User, Anonymous User.  Here are some useful terms to help understand how visibility impacts an application.
+            <p>
+                Application Types
+            </p>
+            <ul>
+                <li><strong>OAuth Enabled Application</strong>: A Gimbal Proximity Enabled application that creates an OAuth Session with the Gimbal Manager.</li>
+                <li><strong>Non-OAuth Application</strong>:  A Gimbal Proximity Enabled application that <strong>does not</strong> create an OAuth Session with the Gimbal Manager.</li>
+            </ul>
+            <p>
+                User Roles
+            </p>
+            <ul>
+                <li><strong>Developer</strong>: The Gimbal Account that created and owns the Proximity API Key used to initialize the application</li>
+                <li><strong>OAuthed User</strong>: A user of an OAuth Enabled Application that successfully creates an OAuth session.</li>
+                <li><strong>Anonymous User</strong>: A user of an Non-OAuth Application</li>
+            </ul>
+            <p>
+                Beacon Types
+            </p>
+            <ul>
+                <li><strong>Developer's Beacon</strong>:  A beacon that is owned by the developer of an application.</li>
+                <li><strong>User's Beacon</strong>:  A beacon that is owned by the OAuthed User who is currently logged in to the running application.</li>
+                <li><strong>OAuthed Beacon</strong>: A beacon that is owned by an OAuthed User of an application other than the currently logged in user.</li>
+                <li><strong>Other Beacon</strong>:  A beacon which is nether a Developer Beacon nor an OAuthed Beacon.</li>
+            </ul>
+            <p>
+                Visibility Types
+            </p>
+            <ul>
+                    <li><strong>Private</strong>: This visibility allows an Non-OAuth Application to sight the Developer's Beacons and match Rules for Developer's beacons.  An OAuth Enabled Application can sight the Developer's beacons and the User's beacons.</li>
+                    <li><strong>Authorized</strong>: In addition to Private Visbility, an OAuth Enabled Application can also see the OAuthed Beacons of any OAuthed User, not just the OAuthed User logged in to the application.</li>
+                    <li><strong>Public</strong>: In addition to Authorized Visibility, rules can be matched when applications developed by another developer are in proximity to a Developer's beacon and an OAuthed Beacon.</li>
+            </ul>
+        </p>
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h3>Allow Anonymous Users To Detect Your Beacons</h3>
+
+                <p>
+                    This checkbox ensures that a Developer's beacon can be sighted by the application being created whether or not the application uses an OAuth Session.
+                </p>
+                <p>
+                    <span class="label label-important">Important</span> If you are creating an Non-OAuth Application you will likely want to check this option so that your application will see your beacons.
+
+                </p>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h3>Non-OAuth Applications</h3>
+
+                <p>
+                	The following tables describe the possible scenarios when an Non-OAuth Application is in proximity to a beacon. 
+                </p>
+                <div style="clear:both"></div>
+                <div class="span4" style="float:left">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th/>
+                            <th colspan="3">
+                                Visibility
+                            </th>
+                        </tr>
+                        <tr >
+                            <td>Developer's&nbsp&nbsp Beacon</td>
+                            <td>Private</td>
+                            <td>Authorized</td>
+                            <td>Public</td>
+                        </tr>
+                         <tr >
+                            <td>Client-Side Sightings</td>
+                            <td style="color: #F00;">Yes*</td>
+                            <td style="color: #F00;">Yes*</td>
+                            <td style="color: #F00;">Yes*</td>
+                        </tr>
+                        <tr >
+                            <td>Server-Side Visits</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="span1" style="float:left">
+                </div>
+                <div class="span4" style="float:left">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th/>
+                            <th colspan="3">
+                                Visibility
+                            </th>
+                        </tr>
+                        <tr >
+                            <td>Other Beacon</td>
+                            <td>Private</td>
+                            <td>Authorized</td>
+                            <td>Public</td>
+                        </tr>
+                         <tr >
+                            <td>Client-Side Sightings</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr >
+                            <td>Server-Side Visits</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear:both"></div>
+                <p>
+                    <span class="label label-important">Important</span> The <span style="color: #F00;">"Yes*"</span> assumes that the "Allow Anonymous Users to Detect Your Beacons" checkbox is enabled
+                </p>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h3>OAuth Enabled Applications</h3>
+
+                <p>
+                    The following tables describe the possible scenarios when an OAuth Enabled Application is in proximity to a beacon. 
+                </p>
+                <div style="clear:both"></div>
+                <div class="span4" style="float:left">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th/>
+                            <th colspan="3">
+                                Visibility
+                            </th>
+                        </tr>
+                        <tr >
+                            <td>Developer's&nbsp&nbsp Beacon</td>
+                            <td>Private</td>
+                            <td>Authorized</td>
+                            <td>Public</td>
+                        </tr>
+                         <tr >
+                            <td>Client-Side Sightings</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr >
+                            <td>Server-Side Visits</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="span1" style="float:left">
+                </div>
+                <div class="span4" style="float:left">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th/>
+                            <th colspan="3">
+                                Visibility
+                            </th>
+                        </tr>
+                        <tr >
+                            <td>User Beacon</td>
+                            <td>Private</td>
+                            <td>Authorized</td>
+                            <td>Public</td>
+                        </tr>
+                         <tr >
+                            <td>Client-Side Sightings</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr >
+                            <td>Server-Side Visits</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear:both"></div>
+                <div class="span4" style="float:left">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th/>
+                            <th colspan="3">
+                                Visibility
+                            </th>
+                        </tr>
+                        <tr >
+                            <td>OAuthed Beacon</td>
+                            <td>Private</td>
+                            <td>Authorized</td>
+                            <td>Public</td>
+                        </tr>
+                         <tr >
+                            <td>Client-Side Sightings</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr >
+                            <td>Server-Side Visits</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="span1"> </div>
+                <div class="span4" style="float:left">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th/>
+                            <th colspan="3">
+                                Visibility
+                            </th>
+                        </tr>
+                        <tr >
+                            <td>Other&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Beacon</td>
+                            <td>Private</td>
+                            <td>Authorized</td>
+                            <td>Public</td>
+                        </tr>
+                         <tr >
+                            <td>Client-Side Sightings</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr >
+                            <td>Server-Side Visits</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear:both"></div>
+
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+
+                <h3>Other Gimbal Proximity Enabled Applications</h3>
+
+                <p>
+                    When a Gimbal Proximity Enabled application created by another developer sees your beacon, the application will not be able to sight your beacon but it may create a server-side visit if the application chose Public visibility.  Here is a table to describe these scenarios:
+                </p>
+                <div style="clear:both"></div>
+                <div class="span4" style="float:left">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th/>
+                            <th colspan="3">
+                                Visibility
+                            </th>
+                        </tr>
+                        <tr >
+                            <td>Developer's&nbsp&nbsp Beacon</td>
+                            <td>Private</td>
+                            <td>Authorized</td>
+                            <td>Public</td>
+                        </tr>
+                         <tr >
+                            <td>Client-Side Sightings</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr >
+                            <td>Server-Side Visits</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="span1"></div>
+                <div class="span4" style="float:left">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th/>
+                            <th colspan="3">
+                                Visibility
+                            </th>
+                        </tr>
+                        <tr >
+                            <td>OAuthed Beacon</td>
+                            <td>Private</td>
+                            <td>Authorized</td>
+                            <td>Public</td>
+                        </tr>
+                         <tr >
+                            <td>Client-Side Sightings</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr >
+                            <td>Server-Side Visits</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear:both"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+        <div id="sightings_background" class="row-fluid api_row">
+    <div style="height: 40px;"></div>
+    <div class="span12">
+
+        <h1>Sightings in Background Mode</h1>
+        <p>
+        	They Gimbal Proximity SDK is designed to work while applications are in the background, however, behavior in background mode is platform dependent.  
+        </p>
+        <p>
+            Platform specific steps to enable background mode and test results can be found here:
+            <ul>
+                <li> <a href="proximity/ios.html#background">iOS&#8482</a></li>
+            </ul>
+        </p>
+        <hr/>
+    </div>
+</div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+    <footer class="row-fluid">
+
+         
+
+             <div id="footer" class="span12">
+
+        <p>&copy; 2013 Qualcomm Retail Solutions, Inc. All rights reserved. Gimbal is a trademark of Qualcomm Retail Solutions, Inc. QUALCOMM is a trademark of QUALCOMM Incorporated, registered in the United States and other countries.</p>
+
+            </div>
+         
+
+    </footer>
+
+ 
+
+                
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/nav-scrolling.js"></script>
+
+</body>
+</html>
